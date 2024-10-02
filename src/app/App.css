@@ -2,6 +2,10 @@
   margin: 0;
 }
 
+ul {
+  list-style: none;
+}
+
 .app {
   padding-top: 32px;
   display: flex;

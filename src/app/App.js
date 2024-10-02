@@ -1,4 +1,5 @@
 import './App.css';
+import { useState } from 'react';
 import { Counter } from 'features';
 
 /**
@@ -12,13 +13,12 @@ import { Counter } from 'features';
  */
 
 export const App = (props) => {
+  const [count, setCount] = useState(5);
+
   return (
-    <div className="app">
+    <div className={'app'}>
       <h1>{props.title}</h1>
-      <Counter minNum={30}
-        startNum={30}
-        maxNum={35}
-      />
+      <Counter count={count} setCount={setCount} />
     </div>
   );
 };

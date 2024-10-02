@@ -12,44 +12,36 @@ import { useState } from 'react';
  */
 
 export const Counter = (props) => {
-  const [count, setCount] = useState(props.startNum);
-  const isMinNum = count <= props.minNum;
-  const isMaxNum = count >= props.maxNum;
+
+  // const isMinNum = count <= props.minNum;
+  // const isMaxNum = count >= props.maxNum;
 
   const handleDownClick = () => {
-    if (isMinNum) return;
-    setCount(count - 1);
+    // if (isMinNum) return;
+    props.setCount(props.count - 1);
   };
 
   const handleUpClick = () => {
-    if (isMaxNum) return;
-    setCount(count + 1);
+    // if (isMaxNum) return;
+    props.setCount(props.count + 1);
   };
 
-  const handleClearClick = () => setCount(props.startNum);
-
   return (
-    <div className='counter'>
-      <p className='counter__copy'>
-        Count: {count}
+    <div className={'counter'}>
+      <p className={'counter__copy'}>
+        Count: {props.count}
       </p>
-      <button className='counter__button'
-        disabled={isMinNum}
+      <button className={'counter__button'}
+        // disabled={isMinNum}
         onClick={handleDownClick}
       >
         Down
       </button>
-      <button className='counter__button'
-        disabled={isMaxNum}
+      <button className={'counter__button'}
+        // disabled={isMaxNum}
         onClick={handleUpClick}
       >
         Up
-      </button>
-      <button className='counter__button'
-        disabled={count === props.startNum}
-        onClick={handleClearClick}
-      >
-        Clear
       </button>
     </div>
   );
