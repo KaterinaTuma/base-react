@@ -13,7 +13,7 @@ import { Counter } from 'features';
  */
 
 export const App = (props) => {
-  const [count, setCount] = useState(5);
+  const [count, setCount] = useState(3);
 
   return (
     <div className={'app'}>
