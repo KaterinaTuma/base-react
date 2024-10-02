@@ -2,13 +2,17 @@
   margin: 0;
 }
 
+ul {
+  list-style: none;
+}
+
 .app {
-  padding-top: 32px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 32px;
   align-items: center;
-  height: 100vh;
-  background-color: #282c34;
+  padding-top: 32px;
   color: white;
+  background-color: #282c34;
 }
