@@ -13,7 +13,9 @@ import './Card.css';
 export const Card = (props) => {
   return (
     <li className={'card'}>
-      <img src={props.url} alt={props.title} />
+      <img src={props.url}
+        alt={props.title}
+      />
     </li>
   );
 };
