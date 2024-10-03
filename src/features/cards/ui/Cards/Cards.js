@@ -15,9 +15,9 @@ export const Cards = (props) => {
   return (
     <ul className={'cards'}>
       {props.cards.map((card) =>
-        <Card title={card.title}
+        <Card key={card.id}
+          title={card.title}
           url={card.thumbnailUrl}
-          key={card.id}
         />)
       }
     </ul>
