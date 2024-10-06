@@ -27,7 +27,7 @@ export const Counter = (props) => {
   return (
     <div className={'counter'}>
       <p className={'counter__copy'}>
-        Count: {props.count}
+        {props.name}: {props.count}
       </p>
       <button className={'counter__button'}
         disabled={isMinNum}

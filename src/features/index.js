@@ -1,2 +1,3 @@
 export { Counter } from './Counter';
-export { Cards } from './cards';
+export { Photos } from './Photos';
+export { Todos } from './Todos';
