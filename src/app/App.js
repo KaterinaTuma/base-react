@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { Gallery, Tasks } from 'widgets';
-import { API_BASE_URL } from 'shared';
+import { API_BASE_URL } from 'shared/config';
 
 /**
  * @typedef {import('./types').AppProps} AppProps

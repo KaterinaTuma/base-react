@@ -1,5 +1,5 @@
 import './Card.css';
-import { randomRGBA } from 'shared';
+import { randomRGBA } from 'shared/utils';
 
 /**
  * @typedef {import('./types').CardProps} CardProps
