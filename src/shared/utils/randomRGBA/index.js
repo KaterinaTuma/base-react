@@ -1,0 +1,1 @@
+export { randomRGBA } from './randomRGBA';
