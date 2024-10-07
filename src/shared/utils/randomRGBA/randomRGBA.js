@@ -1,4 +1,4 @@
-import { randomInt } from 'shared';
+import { randomInt } from 'shared/utils';
 
 /**
  * @function randomRGBA
@@ -8,4 +8,4 @@ import { randomInt } from 'shared';
 
 export const randomRGBA = (alpha) => `
   rgba(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)}, ${alpha})
-`;
+`.trim();
