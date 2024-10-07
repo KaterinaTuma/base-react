@@ -1,6 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { Counter, Photos, Todos } from 'features';
+import { Gallery, Tasks } from 'widgets';
 import { API_BASE_URL } from 'shared';
 
 /**
@@ -14,7 +14,7 @@ import { API_BASE_URL } from 'shared';
  */
 
 export const App = (props) => {
-  const defaultCount = 9;
+  const defaultCount = 3;
   const [photoCount, setPhotoCount] = useState(defaultCount);
   const [photos, setPhotos] = useState([]);
   const [todoCount, setTodoCount] = useState(defaultCount);
@@ -51,22 +51,14 @@ export const App = (props) => {
   return (
     <div className={'app'}>
       <h1>{props.title}</h1>
-      {/* Photo widget */}
-      <div>
-        <Counter name={'Photo count'}
-          count={photoCount}
-          setCount={setPhotoCount}
-        />
-        <Photos photos={photos} />
-      </div>
-      {/* Todo widget */}
-      <div>
-        <Counter name={'Todo count'}
-          count={todoCount}
-          setCount={setTodoCount}
-        />
-        <Todos todos={todos} />
-      </div>
+      <Gallery count={photoCount}
+        setCount={setPhotoCount}
+        photos={photos}
+      />
+      <Tasks count={todoCount}
+        setCount={setTodoCount}
+        todos={todos}
+      />
     </div>
   );
 };
