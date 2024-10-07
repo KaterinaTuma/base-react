@@ -1,4 +1,5 @@
 import './Card.css';
+import { randomRGBA } from 'shared';
 
 /**
  * @typedef {import('./types').CardProps} CardProps
@@ -13,7 +14,7 @@ import './Card.css';
 export const Card = (props) => {
   return (
     <li className={'card'}
-      style={{ background: 'red' }}
+      style={{ background: randomRGBA(1) }}
     >
       {/* name */}
       {props.name && (
