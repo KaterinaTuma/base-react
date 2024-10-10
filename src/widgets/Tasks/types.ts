@@ -2,6 +2,6 @@ import { TodoDetails } from 'features/Todos/types';
 
 export type TasksProps = {
   count: number;
-  setCount: Function;
+  setCount: (count: number) => void;
   todos: TodoDetails[];
 }
