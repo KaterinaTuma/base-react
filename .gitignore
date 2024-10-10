@@ -24,3 +24,6 @@ yarn-error.log*
 
 # custom
 /_notes
+/config
+/scripts
+package-lock.json
