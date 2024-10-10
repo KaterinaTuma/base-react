@@ -1,4 +1,4 @@
-import './Todos.css';
+import classes from './Todos.module.scss';
 import { Card } from 'entity';
 
 /**
@@ -13,7 +13,7 @@ import { Card } from 'entity';
 
 export const Todos = (props) => {
   return (
-    <ul className={'todos'}>
+    <ul className={classes.todos}>
       {props.todos.map((todo) =>
         <Card key={todo.id}
           id={todo.id}

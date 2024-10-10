@@ -1,4 +1,4 @@
-import './App.css';
+import classes from './App.module.scss';
 import { useState, useEffect } from 'react';
 import { Gallery, Tasks } from 'widgets';
 import { API_BASE_URL } from 'shared/config';
@@ -49,7 +49,7 @@ export const App = (props) => {
   }, [todoCount]);
 
   return (
-    <div className={'app'}>
+    <div className={classes.app}>
       <h1>{props.title}</h1>
       <Gallery count={photoCount}
         setCount={setPhotoCount}
