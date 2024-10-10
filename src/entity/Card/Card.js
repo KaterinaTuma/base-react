@@ -1,4 +1,4 @@
-import './Card.css';
+import classes from './Card.module.scss';
 import { randomRGBA } from 'shared/utils';
 
 /**
@@ -13,25 +13,25 @@ import { randomRGBA } from 'shared/utils';
 
 export const Card = (props) => {
   return (
-    <li className={'card'}
+    <li className={classes.card}
       style={{ background: randomRGBA(1) }}
     >
       {/* name */}
       {props.name && (
-        <h2 className={'cardName'}>
+        <h2 className={classes.name}>
           {props.name}
         </h2>
       )}
       {/* image */}
       {props.image && (
-        <img className={'cardImage'}
+        <img className={classes.image}
           src={props.image}
           alt={props.name}
         />
       )}
       {/* text */}
       {props.text && (
-        <p className={'cardText'}>
+        <p className={classes.text}>
           {props.text}
         </p>
       )}

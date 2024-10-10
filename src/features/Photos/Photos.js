@@ -1,4 +1,4 @@
-import './Photos.css';
+import classes from './Photos.module.scss';
 import { Card } from 'entity';
 
 /**
@@ -13,7 +13,7 @@ import { Card } from 'entity';
 
 export const Photos = (props) => {
   return (
-    <ul className={'photos'}>
+    <ul className={classes.photos}>
       {props.photos.map((photo) =>
         <Card key={photo.id}
           id={photo.id}
