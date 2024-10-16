@@ -1,4 +1,4 @@
-import './Counter.css';
+import classes from './Counter.module.scss';
 
 /**
  * @typedef {import('./types').CounterProps} CounterProps
@@ -25,17 +25,17 @@ export const Counter = (props) => {
   };
 
   return (
-    <div className={'counter'}>
-      <p className={'counter__copy'}>
+    <div className={classes.counter}>
+      <p className={classes.text}>
         {props.name}: {props.count}
       </p>
-      <button className={'counter__button'}
+      <button className={classes.button}
         disabled={isMinNum}
         onClick={handleDownClick}
       >
         Down
       </button>
-      <button className={'counter__button'}
+      <button className={classes.button}
         disabled={isMaxNum}
         onClick={handleUpClick}
       >
