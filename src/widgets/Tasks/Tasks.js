@@ -1,5 +1,6 @@
 import classes from './Tasks.module.scss';
-import { Counter, Todos } from 'features';
+import { TodosCounter, Todos } from 'features';
+import { useTodos } from 'shared/hooks';
 
 /**
  * @typedef {import('./types').TasksProps} TasksProps
@@ -12,13 +13,15 @@ import { Counter, Todos } from 'features';
  */
 
 export const Tasks = (props) => {
+  const todosStore = useTodos();
+
   return (
     <div className={classes.tasks}>
-      <Counter name={'Todo count'}
+      <TodosCounter name={'Todo count'}
         count={props.count}
         setCount={props.setCount}
       />
-      <Todos todos={props.todos}/>
+      <Todos todos={todosStore.todos}/>
     </div>
   );
 };
