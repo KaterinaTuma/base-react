@@ -18,7 +18,7 @@ export const usePhotos = create(/** @type {StateCreator} */(set) => ({
       set(() => ({ photos: photosData }));
     } catch (error) {
       set(() => ({ photosErrorMessage: error }));
-    }
+    };
   },
   resetPhotos: () => set(() => ({ photos: [] })),
 }));

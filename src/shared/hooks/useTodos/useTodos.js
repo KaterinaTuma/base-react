@@ -18,7 +18,7 @@ export const useTodos = create(/** @type {StateCreator} */(set) => ({
       set(() => ({ todos: todosData }));
     } catch (error) {
       set(() => ({ todosErrorMessage: error }));
-    }
+    };
   },
   resetTodos: () => set(() => ({ todos: [] })),
 }));
