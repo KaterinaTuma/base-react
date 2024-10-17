@@ -1,13 +1,13 @@
 .counter {
   width: 200px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
   justify-items: center;
 }
 
 .text {
-  grid-column: span 2;
+  grid-column: span 3;
   font-size: 28px;
 }
 
