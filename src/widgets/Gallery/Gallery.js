@@ -1,5 +1,6 @@
 import classes from './Gallery.module.scss';
-import { Counter, Photos } from 'features';
+import { PhotosCounter, Photos } from 'features';
+import { usePhotos } from 'shared/hooks';
 
 /**
  * @typedef {import('./types').GalleryProps} GalleryProps
@@ -12,13 +13,15 @@ import { Counter, Photos } from 'features';
  */
 
 export const Gallery = (props) => {
+  const photosStore = usePhotos();
+
   return (
     <div className={classes.gallery}>
-      <Counter name={'Photo count'}
+      <PhotosCounter name={'Photo count'}
         count={props.count}
         setCount={props.setCount}
       />
-      <Photos photos={props.photos}/>
+      <Photos photos={photosStore.photos}/>
     </div>
   );
 };
