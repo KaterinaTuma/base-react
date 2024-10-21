@@ -14,12 +14,12 @@ import { Card } from 'entity';
 export const Todos = (props) => {
   return (
     <ul className={classes.todos}>
-      {props.todos.map((todo) =>
+      {props.todos.map((todo) => (
         <Card key={todo.id}
           id={todo.id}
           name={todo.title}
-        />)
-      }
+        />
+      ))}
     </ul>
   );
 };
