@@ -1,5 +1,3 @@
-export type CounterProps = {
+export type PhotosCounterProps = {
   name: string;
-  count: number;
-  setCount: Function;
 };
