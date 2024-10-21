@@ -1,27 +1,27 @@
 import classes from './Tasks.module.scss';
-import { TodosCounter, Todos } from 'features';
+import { useEffect } from 'react';
 import { useTodos } from 'shared/hooks';
-
-/**
- * @typedef {import('./types').TasksProps} TasksProps
- */
+import { TodosCounter, Todos } from 'features';
+import { Preloader } from 'shared/ui';
 
 /**
  * @function Tasks
- * @param {TasksProps} props
  * @returns {JSX.Element}
  */
 
-export const Tasks = (props) => {
-  const todosStore = useTodos();
+export const Tasks = () => {
+  const todosState = useTodos();
+
+  useEffect(() => {
+    if (!todosState.todosCount) return;
+    todosState.getTodos(todosState.todosCount);
+  }, [todosState.todosCount]);
 
   return (
     <div className={classes.tasks}>
-      <TodosCounter name={'Todo count'}
-        count={props.count}
-        setCount={props.setCount}
-      />
-      <Todos todos={todosStore.todos}/>
+      <TodosCounter name={'Todos count'} />
+      <Todos todos={todosState.todos}/>
+      {todosState.isTodosLoading ? <Preloader /> : null}
     </div>
   );
 };
