@@ -1,7 +1,7 @@
 import classes from './App.module.scss';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { usePhotos, useTodos } from 'shared/hooks';
 import { Gallery, Tasks } from 'widgets';
-import { API_BASE_URL } from 'shared/config';
 
 /**
  * @typedef {import('./types').AppProps} AppProps
@@ -14,19 +14,20 @@ import { API_BASE_URL } from 'shared/config';
  */
 
 export const App = (props) => {
-  const defaultCount = 0;
-  const [photoCount, setPhotoCount] = useState(defaultCount);
-  const [todoCount, setTodoCount] = useState(defaultCount);
+  const defaultCount = 5;
+  const photosState = usePhotos();
+  const todosState = useTodos();
+
+  useEffect(() => {
+    photosState.setPhotoCount(defaultCount);
+    todosState.setTodosCount(defaultCount);
+  }, []);
 
   return (
     <div className={classes.app}>
       <h1>{props.title}</h1>
-      <Gallery count={photoCount}
-        setCount={setPhotoCount}
-      />
-      <Tasks count={todoCount}
-        setCount={setTodoCount}
-      />
+      <Gallery />
+      <Tasks />
     </div>
   );
 };
