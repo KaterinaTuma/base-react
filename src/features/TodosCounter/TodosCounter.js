@@ -1,64 +1,25 @@
-import classes from './TodosCounter.module.scss';
 import { useTodos } from 'shared/hooks';
+import { Counter } from 'entity';
 
 /**
- * @typedef {import('./types').CounterProps} CounterProps
+ * @typedef {import('./types').TodosCounterProps} Props
  */
 
 /**
  * @function TodosCounter
- * @param {CounterProps} props
+ * @param {Props} props
  * @returns {JSX.Element}
  */
 
 export const TodosCounter = (props) => {
-  const todosStore = useTodos();
-
-  const minCount = 0;
-  const maxCount = 20;
-  const isMinCount = props.count <= minCount;
-  const isMaxCount = props.count >= maxCount;
-
-  const handleDownClick = () => {
-    if (isMinCount) return;
-    props.setCount(props.count - 1);
-    todosStore.getTodos(props.count - 1);
-  };
-
-  const handleUpClick = () => {
-    if (isMaxCount) return;
-    props.setCount(props.count + 1);
-    todosStore.getTodos(props.count + 1);
-  };
-
-  const handleClearClick = () => {
-    if (isMaxCount) return;
-    props.setCount(0);
-    todosStore.resetTodos();
-  };
+  const todosState = useTodos();
 
   return (
-    <div className={classes.counter}>
-      <p className={classes.text}>
-        {props.name}: {props.count}
-      </p>
-      <button className={classes.button}
-        disabled={isMinCount}
-        onClick={handleDownClick}
-      >
-        Down
-      </button>
-      <button className={classes.button}
-        disabled={isMaxCount}
-        onClick={handleUpClick}
-      >
-        Up
-      </button>
-      <button className={classes.button}
-        onClick={handleClearClick}
-      >
-        Clear
-      </button>
-    </div>
+    <Counter name={props.name}
+      minCount={5}
+      count={todosState.todosCount}
+      maxCount={15}
+      setCount={todosState.setTodosCount}
+    />
   );
 };

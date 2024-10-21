@@ -1,5 +1,3 @@
-export type CounterProps = {
+export type TodosCounterProps = {
   name: string;
-  count: number;
-  setCount: Function;
 };
