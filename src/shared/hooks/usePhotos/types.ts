@@ -6,7 +6,11 @@ export type PhotoFromAPI = {
   thumbnailUrl: string;
 };
 
-export type PhotosStore = {
+export type PhotosState = {
+  /* State for count */
+  photoCount: number;
+  setPhotoCount: (photoCount: number) => void;
+  /* State for photos */
   photos: PhotoFromAPI[] | [];
   isPhotosLoading: boolean;
   photosErrorMessage: string;
@@ -14,4 +18,4 @@ export type PhotosStore = {
   resetPhotos: () => void;
 };
 
-export type PhotosStateCreator = (set: Function) => PhotosStore;
+export type PhotosStateCreator = (set: Function) => PhotosState;
