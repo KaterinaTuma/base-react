@@ -14,13 +14,13 @@ import { Card } from 'entity';
 export const Photos = (props) => {
   return (
     <ul className={classes.photos}>
-      {props.photos.map((photo) =>
+      {props.photos.map((photo) => (
         <Card key={photo.id}
           id={photo.id}
           name={photo.title}
           image={photo.thumbnailUrl}
-        />)
-      }
+        />
+      ))}
     </ul>
   );
 };

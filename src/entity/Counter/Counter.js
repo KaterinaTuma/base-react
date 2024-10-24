@@ -11,35 +11,50 @@ import classes from './Counter.module.scss';
  */
 
 export const Counter = (props) => {
-  const isMinNum = props.count <= 0;
-  const isMaxNum = props.count >= 20;
+  const minCount = props.minCount ? props.minCount : 0;
+  const maxCount = props.maxCount ? props.maxCount : 20;
+  const isMinCount = props.count <= minCount;
+  const isMaxCount = props.count >= maxCount;
 
   const handleDownClick = () => {
-    if (isMinNum) return;
+    if (isMinCount) return;
     props.setCount(props.count - 1);
   };
 
   const handleUpClick = () => {
-    if (isMaxNum) return;
+    if (isMaxCount) return;
     props.setCount(props.count + 1);
+  };
+
+  const handleResetClick = () => {
+    props.setCount(minCount);
   };
 
   return (
     <div className={classes.counter}>
-      <p className={classes.text}>
+      {/* Title */}
+      <p className={classes.title}>
         {props.name}: {props.count}
       </p>
+      {/* Down */}
       <button className={classes.button}
-        disabled={isMinNum}
+        disabled={isMinCount}
         onClick={handleDownClick}
       >
         Down
       </button>
+      {/* Up */}
       <button className={classes.button}
-        disabled={isMaxNum}
+        disabled={isMaxCount}
         onClick={handleUpClick}
       >
         Up
+      </button>
+      {/* Reset */}
+      <button className={classes.button}
+        onClick={handleResetClick}
+      >
+        Reset
       </button>
     </div>
   );
