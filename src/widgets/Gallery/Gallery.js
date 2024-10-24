@@ -21,7 +21,7 @@ export const Gallery = () => {
     <div className={classes.gallery}>
       <PhotoCounter name={'Photos count'} />
       <Photos photos={photosStore.photos} />
-      {photosStore.isPhotosLoading ? <Preloader /> : null}
+      <Preloader isActive={photosStore.isPhotosLoading} />
     </div>
   );
 };

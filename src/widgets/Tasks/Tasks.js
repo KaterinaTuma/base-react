@@ -21,7 +21,7 @@ export const Tasks = () => {
     <div className={classes.tasks}>
       <TodoCounter name={'Todos count'} />
       <Todos todos={todosStore.todos}/>
-      {todosStore.isTodosLoading ? <Preloader /> : null}
+      <Preloader isActive={todosStore.isTodosLoading} />
     </div>
   );
 };
