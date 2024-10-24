@@ -1,1 +1,0 @@
-export { PhotosCounter } from './PhotosCounter';

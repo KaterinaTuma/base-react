@@ -1,7 +1,7 @@
 import classes from './Tasks.module.scss';
 import { useEffect } from 'react';
-import { useTodos } from 'shared/hooks';
-import { TodosCounter, Todos } from 'features';
+import { useTodosStore } from 'shared/hooks';
+import { TodoCounter, Todos } from 'features';
 import { Preloader } from 'shared/ui';
 
 /**
@@ -10,18 +10,18 @@ import { Preloader } from 'shared/ui';
  */
 
 export const Tasks = () => {
-  const todosState = useTodos();
+  const todosStore = useTodosStore();
 
   useEffect(() => {
-    if (!todosState.todosCount) return;
-    todosState.getTodos(todosState.todosCount);
-  }, [todosState.todosCount]);
+    if (!todosStore.todoCount) return;
+    todosStore.getTodos(todosStore.todoCount);
+  }, [todosStore.todoCount]);
 
   return (
     <div className={classes.tasks}>
-      <TodosCounter name={'Todos count'} />
-      <Todos todos={todosState.todos}/>
-      {todosState.isTodosLoading ? <Preloader /> : null}
+      <TodoCounter name={'Todos count'} />
+      <Todos todos={todosStore.todos}/>
+      {todosStore.isTodosLoading ? <Preloader /> : null}
     </div>
   );
 };

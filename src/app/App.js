@@ -1,6 +1,6 @@
 import classes from './App.module.scss';
 import { useEffect } from 'react';
-import { usePhotos, useTodos } from 'shared/hooks';
+import { usePhotosStore, useTodosStore } from 'shared/hooks';
 import { Gallery, Tasks } from 'widgets';
 
 /**
@@ -15,12 +15,12 @@ import { Gallery, Tasks } from 'widgets';
 
 export const App = (props) => {
   const defaultCount = 5;
-  const photosState = usePhotos();
-  const todosState = useTodos();
+  const photosStore = usePhotosStore();
+  const todosStore = useTodosStore();
 
   useEffect(() => {
-    photosState.setPhotoCount(defaultCount);
-    todosState.setTodosCount(defaultCount);
+    photosStore.setPhotoCount(defaultCount);
+    todosStore.setTodoCount(defaultCount);
   }, []);
 
   return (
