@@ -20,6 +20,7 @@ export const TodoCounter = (props) => {
       count={todosStore.todoCount}
       maxCount={15}
       setCount={todosStore.setTodoCount}
+      isDisabled={todosStore.isTodosLoading}
     />
   );
 };
