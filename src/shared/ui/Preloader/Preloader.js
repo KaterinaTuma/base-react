@@ -1,5 +1,4 @@
 import classes from './Preloader.module.scss';
-import { IconPreloader } from 'shared/icons';
 
 /**
  * @typedef {import('./types').PreloaderProps} Props
@@ -17,8 +16,12 @@ export const Preloader = (props) => {
   return (
     <div className={classes.preloader}>
       <div className={classes.preloader__wrapper}>
-        <IconPreloader />
+        <div className={classes.preloader__item}></div>
+        <div className={classes.preloader__item}></div>
+        <div className={classes.preloader__item}></div>
+        <div className={classes.preloader__item}></div>
       </div>
     </div>
   );
 };
+
