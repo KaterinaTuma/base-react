@@ -38,20 +38,21 @@ export const Counter = (props) => {
       </p>
       {/* Down */}
       <button className={classes.button}
-        disabled={isMinCount}
+        disabled={props.isDisabled || isMinCount}
         onClick={handleDownClick}
       >
         Down
       </button>
       {/* Up */}
       <button className={classes.button}
-        disabled={isMaxCount}
+        disabled={props.isDisabled || isMaxCount}
         onClick={handleUpClick}
       >
         Up
       </button>
       {/* Reset */}
       <button className={classes.button}
+        disabled={props.isDisabled}
         onClick={handleResetClick}
       >
         Reset

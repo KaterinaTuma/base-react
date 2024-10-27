@@ -30,4 +30,6 @@ export const usePhotosStore = create(/** @type {StoreCreator} */(set) => ({
     };
   },
   resetPhotos: () => set(/** @type {Setter} */(store) => ({ ...store, photos: [] })),
+  getPhotoById: (photos, id) => photos
+    .find((photo) => photo.id === Number(id)),
 }));

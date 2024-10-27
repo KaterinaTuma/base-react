@@ -20,6 +20,7 @@ export const PhotoCounter = (props) => {
       count={photosStore.photoCount}
       maxCount={15}
       setCount={photosStore.setPhotoCount}
+      isDisabled={photosStore.isPhotosLoading}
     />
   );
 };

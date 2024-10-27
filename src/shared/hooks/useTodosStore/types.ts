@@ -15,6 +15,7 @@ export type TodosStore = {
   todosErrorMessage: string;
   getTodos: (count: number) => void;
   resetTodos: () => void;
+  getTodoById: (todos: TodoFromAPI[], id: string) => TodoFromAPI | undefined;
 };
 
 export type SetterCallback = (store: TodosStore) => TodosStore;

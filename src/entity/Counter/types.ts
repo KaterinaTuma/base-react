@@ -4,4 +4,5 @@ export type CounterProps = {
   count: number;
   maxCount: number;
   setCount: Function;
+  isDisabled: boolean;
 };

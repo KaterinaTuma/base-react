@@ -30,4 +30,6 @@ export const useTodosStore = create(/** @type {StoreCreator} */(set) => ({
     };
   },
   resetTodos: () => set(/** @type {Setter} */(store) => ({ ...store, todos: [] })),
+  getTodoById: (todos, id) => todos
+    .find((todo) => todo.id === Number(id)),
 }));
