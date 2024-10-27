@@ -7,13 +7,13 @@
   z-index: 10;
   background: radial-gradient(circle, #282c34ef, #282c3400);
 
-  &__wrapper {
+  .wrapper {
     position: relative;
     width: 100px;
     height: 16px;
   }
 
-  &__item {
+  .item {
     position: absolute;
     width: 16px;
     height: 16px;

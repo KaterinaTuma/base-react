@@ -15,11 +15,11 @@ export const Preloader = (props) => {
 
   return (
     <div className={classes.preloader}>
-      <div className={classes.preloader__wrapper}>
-        <div className={classes.preloader__item}></div>
-        <div className={classes.preloader__item}></div>
-        <div className={classes.preloader__item}></div>
-        <div className={classes.preloader__item}></div>
+      <div className={classes.wrapper}>
+        <div className={classes.item}></div>
+        <div className={classes.item}></div>
+        <div className={classes.item}></div>
+        <div className={classes.item}></div>
       </div>
     </div>
   );
