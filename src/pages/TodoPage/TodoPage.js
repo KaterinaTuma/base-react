@@ -1,5 +1,5 @@
 import classes from './TodoPage.module.scss';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useTodosStore } from 'shared/hooks';
 
 /**
@@ -10,6 +10,7 @@ import { useTodosStore } from 'shared/hooks';
 export const TodoPage = () => {
   const params = useParams();
   const todosStore = useTodosStore();
+  const location = useLocation();
 
   if (!params.todoId) return <p>Invalid todo id</p>;
 
@@ -18,7 +19,9 @@ export const TodoPage = () => {
   if (!todo) return <p>Task not found</p>;
 
   return (
-    <div className={classes.todoPage}>
+    <div className={classes.todoPage}
+      style={{ background: location.state.backgroundColor }}
+    >
       <h2>{todo.title}</h2>
     </div>
   );
