@@ -3,4 +3,5 @@ export type CardProps = {
   name?: string;
   image?: string;
   text?: string;
+  user?: string;
 };

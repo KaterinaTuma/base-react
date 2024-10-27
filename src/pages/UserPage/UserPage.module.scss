@@ -1,0 +1,15 @@
+.user {
+  margin-top: 32px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  color: var(--color-secondary);
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 18px;
+  }
+}

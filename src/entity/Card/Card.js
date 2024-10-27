@@ -13,14 +13,20 @@ import { randomRGBA } from 'shared/utils';
  */
 
 export const Card = (props) => {
-  const page = (props.image && 'photo') || (props.name && 'todo');
+  const page = (props.user && 'user') ||
+    (props.image && 'photo') ||
+    (props.name && 'todo');
   const endPoint = `/${page}/${props.id}`;
+
+  const backgroundColor = randomRGBA(1);
 
   return (
     <>
-      <Link to={endPoint}>
+      <Link to={endPoint}
+        state={{ backgroundColor }}
+      >
         <li className={classes.card}
-          style={{ background: randomRGBA(1) }}
+          style={{ background: backgroundColor }}
         >
           {/* name */}
           {props.name && (
@@ -39,6 +45,12 @@ export const Card = (props) => {
           {props.text && (
             <p className={classes.text}>
               {props.text}
+            </p>
+          )}
+          {/* user */}
+          {props.user && (
+            <p className={classes.user}>
+              {props.user}
             </p>
           )}
         </li>
