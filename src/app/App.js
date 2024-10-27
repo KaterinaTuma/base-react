@@ -1,7 +1,8 @@
 import classes from './App.module.scss';
 import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { usePhotosStore, useTodosStore } from 'shared/hooks';
-import { Gallery, Tasks } from 'widgets';
+import { HomePage, PhotoPage, TodoPage } from 'pages';
 
 /**
  * @typedef {import('./types').AppProps} AppProps
@@ -24,10 +25,17 @@ export const App = (props) => {
   }, []);
 
   return (
-    <div className={classes.app}>
-      <h1>{props.title}</h1>
-      <Gallery />
-      <Tasks />
-    </div>
+    <BrowserRouter>
+      <div className={classes.app}>
+        <h1>
+          <Link to={'/'}>{props.title}</Link>
+        </h1>
+        <Routes>
+          <Route path={'/'} element={<HomePage />} />
+          <Route path={'/photo/:photoId/'} element={<PhotoPage />} />
+          <Route path={'/todo/:todoId'} element={<TodoPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 };
