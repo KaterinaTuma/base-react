@@ -1,4 +1,4 @@
-/*reset*/
+/* reset */
 *,
 *::before,
 *::after {
@@ -17,10 +17,24 @@ a {
   text-decoration: none;
 }
 
+/* global */
+
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  font: inherit;
+}
+
+img {
+  width: 100%;
+}
+
 /* variables */
 :root {
   --color-primary: #ffffff;
-  --color-secondary: #777a7c;
+  --color-secondary: #000000;
   --color-highlight: #4361ee;
   --bg-color: #282c34;
   --bg-color-button: #1d2226;
@@ -33,9 +47,8 @@ a {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
   align-items: center;
-  padding-top: 16px;
-  color: white;
+  color: var(--color-primary);
   background-color: var(--bg-color);
 }

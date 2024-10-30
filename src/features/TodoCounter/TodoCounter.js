@@ -1,4 +1,4 @@
-import { useTodosStore } from 'shared/hooks';
+import { useTodos } from 'shared/stores';
 import { Counter } from 'entity';
 
 /**
@@ -12,7 +12,7 @@ import { Counter } from 'entity';
  */
 
 export const TodoCounter = (props) => {
-  const todosStore = useTodosStore();
+  const todosStore = useTodos();
 
   return (
     <Counter name={props.name}
