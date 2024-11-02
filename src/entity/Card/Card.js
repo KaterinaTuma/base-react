@@ -1,11 +1,11 @@
 import classes from './Card.module.scss';
 import { Link } from 'react-router-dom';
-import { useTodos } from 'shared/stores';
 import { randomRGBA } from 'shared/utils';
 
 /**
  * @typedef {import('./types').PhotoProps} PhotoProps
  * @typedef {import('./types').TodoProps} TodoProps
+ * @typedef {import('./types').PostProps} PostProps
  * @typedef {import('./types').Card} Card
  */
 
@@ -40,7 +40,6 @@ const Photo = (props) => {
  */
 
 const Todo = (props) => {
-  const todosStore = useTodos();
   const endPoint = `/todo/${props.todo.id}`;
   const background = randomRGBA(1);
 
@@ -57,8 +56,37 @@ const Todo = (props) => {
   );
 };
 
+/**
+ * @function Post
+ * @param {PostProps} props
+ * @returns
+ */
+
+const Post = (props) => {
+  const endPoint = `/post/${props.post.id}`;
+  const background = randomRGBA(0.5);
+
+  return (
+    <Link to={endPoint}>
+      <li className={classes.card}
+        style={{ background }}
+      >
+        <div className={classes.post}>
+          <h2 className={classes.label}>
+            {props.post.title}
+          </h2>
+          <p className={classes.text}>
+            {props.post.body}
+          </p>
+        </div>
+      </li>
+    </Link>
+  );
+};
+
 /** @type {Card} */
 export const Card = {
   Photo,
   Todo,
+  Post,
 };
