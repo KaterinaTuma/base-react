@@ -21,6 +21,7 @@ export const Header = (props) => (
         <ul className={classes.nav}>
           <Link className={classes.item} to="/photos">Gallery</Link>
           <Link className={classes.item} to="/todos">Tasks</Link>
+          <Link className={classes.item} to="/posts">Blog</Link>
         </ul>
       </nav>
     </div>

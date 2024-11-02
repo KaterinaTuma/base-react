@@ -1,0 +1,1 @@
+export { PostCounter } from './PostCounter';
