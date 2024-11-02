@@ -1,8 +1,16 @@
 import classes from './App.module.scss';
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { usePhotosStore, useTodosStore } from 'shared/hooks';
-import { HomePage, PhotoPage, TodoPage } from 'pages';
+import { BrowserRouter } from 'react-router-dom';
+import { Routes } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import { usePhotos } from 'shared/stores';
+import { useTodos } from 'shared/stores';
+import { HomePage } from 'pages';
+import { PhotoPage } from 'pages';
+import { PhotosPage } from 'pages';
+import { TodoPage } from 'pages';
+import { TodosPage } from 'pages';
+import { Header } from 'widgets';
 
 /**
  * @typedef {import('./types').AppProps} AppProps
@@ -16,8 +24,8 @@ import { HomePage, PhotoPage, TodoPage } from 'pages';
 
 export const App = (props) => {
   const defaultCount = 5;
-  const photosStore = usePhotosStore();
-  const todosStore = useTodosStore();
+  const photosStore = usePhotos();
+  const todosStore = useTodos();
 
   useEffect(() => {
     photosStore.setPhotoCount(defaultCount);
@@ -27,12 +35,12 @@ export const App = (props) => {
   return (
     <BrowserRouter>
       <div className={classes.app}>
-        <h1>
-          <Link to={'/'}>{props.title}</Link>
-        </h1>
+        <Header title={props.title}/>
         <Routes>
           <Route path={'/'} element={<HomePage />} />
-          <Route path={'/photo/:photoId/'} element={<PhotoPage />} />
+          <Route path={'/photos'} element={<PhotosPage />} />
+          <Route path={'/todos'} element={<TodosPage />} />
+          <Route path={'/photo/:photoId'} element={<PhotoPage />} />
           <Route path={'/todo/:todoId'} element={<TodoPage />} />
         </Routes>
       </div>

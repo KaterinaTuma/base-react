@@ -1,4 +1,4 @@
-import { usePhotosStore } from 'shared/hooks';
+import { usePhotos } from 'shared/stores';
 import { Counter } from 'entity';
 
 /**
@@ -12,7 +12,7 @@ import { Counter } from 'entity';
  */
 
 export const PhotoCounter = (props) => {
-  const photosStore = usePhotosStore();
+  const photosStore = usePhotos();
 
   return (
     <Counter name={props.name}

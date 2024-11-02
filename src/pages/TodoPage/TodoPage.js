@@ -1,6 +1,8 @@
 import classes from './TodoPage.module.scss';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useTodosStore } from 'shared/hooks';
+import { useTodos } from 'shared/stores';
+import { randomRGBA } from 'shared/utils';
 
 /**
  * @function TodoPage
@@ -9,16 +11,25 @@ import { useTodosStore } from 'shared/hooks';
 
 export const TodoPage = () => {
   const params = useParams();
-  const todosStore = useTodosStore();
+  const todosStore = useTodos();
 
   if (!params.todoId) return <p>Invalid todo id</p>;
 
-  const todo = todosStore.getTodoById(todosStore.todos, params.todoId);
+  useEffect(() => {
+    if (!params.todoId) return;
+    todosStore.getTodoById(params.todoId);
+  }, []);
+
+  const todo = todosStore.todo;
 
   if (!todo) return <p>Task not found</p>;
 
+  const background = randomRGBA(1);
+
   return (
-    <div className={classes.todoPage}>
+    <div className={classes.todoPage}
+      style={{ background }}
+    >
       <h2>{todo.title}</h2>
     </div>
   );
