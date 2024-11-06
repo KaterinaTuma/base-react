@@ -24,6 +24,11 @@
   .item:hover {
     color: var(--color-highlight);
   }
+
+  .active {
+    color: var(--color-highlight);
+    cursor: default;
+  }
 }
 
 
