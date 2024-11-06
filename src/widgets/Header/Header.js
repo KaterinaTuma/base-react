@@ -21,29 +21,23 @@ export const Header = (props) => {
         </h1>
         <nav>
           <ul className={classes.nav}>
-            <li>
+            <li className={classes.item}>
               <NavLink to="/photos"
-                className={({ isActive }) =>
-                  `${classes.item} ${isActive ? classes.active : ''}`
-                }
+                className={({ isActive }) => isActive ? classes.active : ''}
               >
                 Gallery
               </NavLink>
             </li>
-            <li>
+            <li className={classes.item}>
               <NavLink to="/todos"
-                className={({ isActive }) =>
-                  `${classes.item} ${isActive ? classes.active : ''}`
-                }
+                className={({ isActive }) => isActive ? classes.active : ''}
               >
                 Tasks
               </NavLink>
             </li>
-            <li>
+            <li className={classes.item}>
               <NavLink to="/posts"
-                className={({ isActive }) =>
-                  `${classes.item} ${isActive ? classes.active : ''}`
-                }
+                className={({ isActive }) => isActive ? classes.active : ''}
               >
                 Blog
               </NavLink>
