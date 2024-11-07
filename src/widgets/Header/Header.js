@@ -1,5 +1,6 @@
 import classes from './Header.module.scss';
 import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 /**
  * @typedef {import('./types').HeaderProps} Props
@@ -11,19 +12,39 @@ import { Link } from 'react-router-dom';
  * @returns {JSX.Element}
  */
 
-export const Header = (props) => (
-  <header className={classes.header}>
-    <div className={classes.wrapper}>
-      <h1 className={classes.logo}>
-        <Link to={'/'}>{props.title}</Link>
-      </h1>
-      <nav>
-        <ul className={classes.nav}>
-          <Link className={classes.item} to="/photos">Gallery</Link>
-          <Link className={classes.item} to="/todos">Tasks</Link>
-          <Link className={classes.item} to="/posts">Blog</Link>
-        </ul>
-      </nav>
-    </div>
-  </header>
-);
+export const Header = (props) => {
+  return (
+    <header className={classes.header}>
+      <div className={classes.wrapper}>
+        <h1 className={classes.logo}>
+          <Link to={'/'}>{props.title}</Link>
+        </h1>
+        <nav>
+          <ul className={classes.nav}>
+            <li className={classes.item}>
+              <NavLink to={'/photos'}
+                className={({ isActive }) => isActive ? classes.active : ''}
+              >
+                Gallery
+              </NavLink>
+            </li>
+            <li className={classes.item}>
+              <NavLink to={'/todos'}
+                className={({ isActive }) => isActive ? classes.active : ''}
+              >
+                Tasks
+              </NavLink>
+            </li>
+            <li className={classes.item}>
+              <NavLink to={'/posts'}
+                className={({ isActive }) => isActive ? classes.active : ''}
+              >
+                Blog
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  );
+};
