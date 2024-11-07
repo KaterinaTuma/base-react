@@ -21,7 +21,7 @@ export type PhotosStore = {
 
   /* state for photos store */
   isPhotosLoading: boolean;
-  photos: PhotoFromAPI[] | [];
+  photos: PhotoFromAPI[];
   photosErrorMessage: string;
   getPhotos: (count: number) => void;
   resetPhotos: () => void;

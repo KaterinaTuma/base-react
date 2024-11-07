@@ -1,0 +1,45 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color_overlay_modal);
+
+  .wrapper {
+    position: relative;
+    padding: 30px 60px;
+    display: grid;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background: var(--color_bg_page);
+  }
+
+  svg {
+    width: 36px;
+    height: 36px;
+    justify-self: center;
+  }
+
+  .close {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: -28px;
+    right: -28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    fill: var(--color_text_secondary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      fill: var(--color_text_white);
+    }
+  }
+}

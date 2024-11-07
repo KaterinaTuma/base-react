@@ -1,21 +1,21 @@
 import { usePosts } from 'shared/stores';
-import { Counter } from 'entity';
+import { Counter as UiCounter } from 'entity';
 
 /**
- * @typedef {import('./types').PostCounterProps} Props
+ * @typedef {import('./types').CounterProps} Props
  */
 
 /**
- * @function PostCounter
+ * @function Counter
  * @param {Props} props
  * @returns {JSX.Element}
  */
 
-export const PostCounter = (props) => {
+export const Counter = (props) => {
   const postsStore = usePosts();
 
   return (
-    <Counter name={props.name}
+    <UiCounter name={props.name}
       minCount={5}
       count={postsStore.postCount}
       maxCount={15}

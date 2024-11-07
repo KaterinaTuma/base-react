@@ -1,0 +1,37 @@
+.app.dark {
+  --color_accent: #1677ff;
+  --color_accent-hover: #4096ff;
+  --color_accent-active: #0958d9;
+  --color_error: #ff4d4f;
+  --color_error-hover: #FF7875;
+  --color_error-active: #D9363E;
+
+  /* Typography colors */
+  --color_text_default: #ffffff;
+  --color_text_secondary: #717680;
+  --color_text_white: #ffffff;
+  --color_text_disabled: rgba(255, 255, 255, 0.25);
+  --color_text_item: rgba(255, 255, 255, 0.65);
+
+  /* Background colors */
+  --color_bg_page: #282c34;
+  --color_bg_default: #141414;
+  --color_bg_disabled: rgba(0, 0, 0, 0.04);
+  --color_bg_item-hover: rgba(255, 255, 255, 0.6);
+  --color_bg_item-active: #E6F4FF;
+
+  /* Borders colors */
+  --color_border_default: #424242;
+  --color_border_error-hover: #7E2E2F;
+  --color_border_success: #b7eb8f;
+  --color_border_disabled: #424242;
+
+  /* Shadow colors */
+  --color_shadow_default: rgba(67, 67, 67, 0.5);
+  --color_shadow_focus: rgba(5, 145, 255, 0.1);
+  --color_shadow_dark: #000000;
+  --color_shadow_light: #575757;
+
+  /* Overlay colors */
+  --color_overlay_modal: rgba(0, 0, 0, 0.25);
+}

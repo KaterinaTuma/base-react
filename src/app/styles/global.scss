@@ -1,0 +1,19 @@
+/*global*/
+body {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+}
+
+img {
+  width: 100%;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  color: var(--color_text_default);
+  background-color: var(--color_bg_page);
+}
