@@ -1,10 +1,12 @@
 import classes from './Blog.module.scss';
+import { useState } from 'react';
 import { useEffect } from 'react';
 import { usePosts } from 'shared/stores';
 import { PostCounter } from 'features';
 import { Posts } from 'features';
-import { Actions } from 'features';
+import { PostCreation } from 'features';
 import { Preloader } from 'shared/ui';
+import { Button } from 'shared/ui';
 
 /**
  * @function Blog
@@ -13,6 +15,7 @@ import { Preloader } from 'shared/ui';
 
 export const Blog = () => {
   const postsStore = usePosts();
+  const [isPostCreationOpen, setIsPostCreationOpen] = useState(false);
 
   useEffect(() => {
     if (!postsStore.postCount) return;
@@ -21,10 +24,17 @@ export const Blog = () => {
 
   return (
     <div className={classes.blog}>
-      <PostCounter name={'Photos count'} />
-      <Actions />
+      <PostCounter name={'Post count'} />
+      <Button type={'button'}
+        onClick={() => setIsPostCreationOpen(true)}
+      >
+        {'Add post'}
+      </Button>
       <Posts posts={postsStore.posts} />
       <Preloader isActive={postsStore.isPostsLoading} />
+      <PostCreation isOpen={isPostCreationOpen}
+        onClose={() => setIsPostCreationOpen(false)}
+      />
     </div>
   );
 };
