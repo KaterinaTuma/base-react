@@ -1,0 +1,1 @@
+export { PostDeletion } from './PostDeletion';
