@@ -1,0 +1,35 @@
+:root {
+  .light {
+    --color_accent: #1677ff;
+    --color_accent-hover: #4096ff;
+    --color_accent-active: #0958d9;
+    --color_error: #ff4d4f;
+    --color_error-hover: #FF7875;
+    --color_error-active: #D9363E;
+
+
+    /* Typography colors */
+    --color_text-default: #000000;
+    --color_text-secondary: #717680;
+    --color_text-white: #FFFFFF;
+    --color_text-disabled: rgba(0, 0, 0, 0.25);
+
+    /* Background colors */
+    --color_bg_page: #efefef;
+    --color_bg_default: #ffffff;
+    --color_bg_disabled: rgba(0, 0, 0, 0.04);
+
+    /* Borders colors */
+    --color_bdr_default: #d9d9d9;
+    --color_bdr_error-hover: #FFA39E;
+    --color_bdr_success: #b7eb8f;
+    --color_bdr_disabled: #d9d9d9;
+
+    /* Shadow colors */
+    --color_shadow_default: rgba(67, 67, 67, 0.5);
+    --color_shadow_focus: rgba(5, 145, 255, 0.1);
+
+    /* Overlay colors */
+    --color_overlay_modal: rgba(0, 0, 0, 0.25);
+  }
+}
