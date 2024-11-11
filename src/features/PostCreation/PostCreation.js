@@ -32,7 +32,7 @@ export const PostCreation = (props) => {
   const handleBodyInputChange = (/** @type {React.ChangeEvent<HTMLTextAreaElement>} */ event) =>
     setPostBody(/** @type {HTMLTextAreaElement} */ (event.target).value);
 
-  const handleSubmit = (/** @type {React.FormEvent<HTMLFormElement>} */ event) => {
+  const handleCreateSubmit = (/** @type {React.FormEvent<HTMLFormElement>} */ event) => {
     event.preventDefault();
     const post = {
       userId: DEFAULT_USER_ID,
@@ -65,7 +65,7 @@ export const PostCreation = (props) => {
         <h2 className={classes.title}>Add post</h2>
         {/* Form */}
         <form className={classes.form}
-          onSubmit={handleSubmit}
+          onSubmit={handleCreateSubmit}
         >
           <InputText placeholder={'Title'}
             value={postTitle}
@@ -79,7 +79,7 @@ export const PostCreation = (props) => {
             <Button type={'submit'}
               disabled={!postTitle || !postBody || postsStore.isPostCreating}
             >
-              Add Post
+              Create post
             </Button>
             <Button type={'button'}
               disabled={postsStore.isPostCreating}
@@ -90,7 +90,7 @@ export const PostCreation = (props) => {
           </div>
         </form>
       </Modal>
-      {/* Result modal */}
+      {/* Feedback modal */}
       <Modal isOpen={isFeedbackModalOpen}
         type={postsStore.isPostCreated ? 'success' : 'error'}
         onClose={handleFeedbackModalClose}
