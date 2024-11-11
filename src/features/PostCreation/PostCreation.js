@@ -1,10 +1,12 @@
 import classes from './PostCreation.module.scss';
 import { useState } from 'react';
+import { useEffect } from 'react';
 import { usePosts } from 'shared/stores';
-import { Modal } from 'entity';
+import { Modal } from 'shared/ui';
 import { InputText } from 'shared/ui';
+import { Textarea } from 'shared/ui';
 import { Button } from 'shared/ui';
-import { randomInt } from 'shared/utils';
+import { DEFAULT_USER_ID } from 'shared/config';
 
 /**
  * @typedef {import('./types').PostCreationProps} Props
@@ -20,59 +22,82 @@ export const PostCreation = (props) => {
   if (!props.isOpen) return null;
 
   const postsStore = usePosts();
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  const [postTitle, setPostTitle] = useState('');
+  const [postBody, setPostBody] = useState('');
+  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
 
-  const handleTitleInputChange = (/** @type {React.ChangeEvent<HTMLInputElement>} */ event) => {
-    const title = /** @type {HTMLInputElement} */ (event.target).value;
-    setTitle(title);
-  };
+  const handlePostTitleChange = (/** @type {React.ChangeEvent<HTMLInputElement>} */ event) =>
+    setPostTitle(/** @type {HTMLInputElement} */ (event.target).value);
 
-  const handleBodyInputChange = (/** @type {React.ChangeEvent<HTMLInputElement>} */ event) => {
-    const body = /** @type {HTMLInputElement} */ (event.target).value;
-    setBody(body);
-  };
+  const handleBodyInputChange = (/** @type {React.ChangeEvent<HTMLTextAreaElement>} */ event) =>
+    setPostBody(/** @type {HTMLTextAreaElement} */ (event.target).value);
 
   const handleSubmit = (/** @type {React.FormEvent<HTMLFormElement>} */ event) => {
     event.preventDefault();
     const post = {
-      id: randomInt(22, 100),
-      userId: randomInt(100, 200),
-      title,
-      body,
+      userId: DEFAULT_USER_ID,
+      title: postTitle,
+      body: postBody,
+      timestamp: Date.now(),
     };
     postsStore.createPost(post);
   };
 
+  const handleFeedbackModalClose = () => {
+    setIsFeedbackModalOpen(false);
+    postsStore.resetPostCreation();
+    props.onClose();
+  };
+
+  useEffect(() => {
+    if (postsStore.isPostCreated || postsStore.postCreateErrorMessage) {
+      setIsFeedbackModalOpen(true);
+    }
+  }, [postsStore.isPostCreated, postsStore.postCreateErrorMessage]);
+
   return (
-    <Modal isOpen={props.isOpen}
-      onClose={props.onClose}
-    >
-      {/* Title */}
-      <h2 className={classes.title}>Add post</h2>
-      {/* Form */}
-      <form className={classes.form}
-        onSubmit={handleSubmit}
+    <>
+      {/* PostCreation modal */}
+      <Modal isOpen={props.isOpen}
+        onClose={props.onClose}
       >
-        <InputText placeholder={'Title'}
-          value={title}
-          onChange={handleTitleInputChange}
-        />
-        <InputText placeholder={'Post'}
-          value={body}
-          onChange={handleBodyInputChange}
-        />
-        <div className={classes.actions}>
-          <Button type={'submit'}>
-            {'Add Post'}
-          </Button>
-          <Button type={'button'}
-            onClick={props.onClose}
-          >
-            {'Cancel'}
-          </Button>
-        </div>
-      </form>
-    </Modal>
+        {/* Title */}
+        <h2 className={classes.title}>Add post</h2>
+        {/* Form */}
+        <form className={classes.form}
+          onSubmit={handleSubmit}
+        >
+          <InputText placeholder={'Title'}
+            value={postTitle}
+            onChange={handlePostTitleChange}
+          />
+          <Textarea placeholder={'Post'}
+            value={postBody}
+            onChange={handleBodyInputChange}
+          />
+          <div className={classes.actions}>
+            <Button type={'submit'}
+              disabled={!postTitle || !postBody || postsStore.isPostCreating}
+            >
+              Add Post
+            </Button>
+            <Button type={'button'}
+              disabled={postsStore.isPostCreating}
+              onClick={props.onClose}
+            >
+              Cancel
+            </Button>
+          </div>
+        </form>
+      </Modal>
+      {/* Result modal */}
+      <Modal isOpen={isFeedbackModalOpen}
+        type={postsStore.isPostCreated ? 'success' : 'error'}
+        onClose={handleFeedbackModalClose}
+      >
+        {postsStore.isPostCreated && <p>Post was successfully created!</p>}
+        {postsStore.postCreateErrorMessage && <p>Something went wrong!</p>}
+      </Modal>
+    </>
   );
 };
