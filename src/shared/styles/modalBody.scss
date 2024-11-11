@@ -1,0 +1,18 @@
+.modalBody {
+  .title {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .form {
+    width: 350px;
+    display: grid;
+    gap: 30px;
+  }
+
+  .buttons {
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+  }
+}
