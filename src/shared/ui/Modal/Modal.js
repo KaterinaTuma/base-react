@@ -21,7 +21,7 @@ export const Modal = (props) => {
 
   const handleOverlayClick = (/** @type {React.MouseEvent} */ event) =>
     event.target === event.currentTarget
-      ? props.onClose()
+      ? props.onClose(event)
       : null;
 
   return (
