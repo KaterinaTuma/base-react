@@ -11,10 +11,16 @@ import classes from './Button.module.scss';
  */
 
 export const Button = (props) => {
+  const buttonClassNames = `
+    ${classes.button}
+    ${props.mode ? classes[props.mode] : ''}
+    ${props.className || ''}
+    `.trim();
+
   return (
-    <button className={classes.button}
+    <button className={buttonClassNames}
       type={props.type}
-      disabled={props.isDisabled}
+      disabled={props.disabled}
       onClick={props.onClick}
     >
       {props.children}
