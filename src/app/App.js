@@ -1,4 +1,4 @@
-import classes from './App.module.scss';
+import './styles/index.scss';
 import { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
@@ -39,8 +39,8 @@ export const App = (props) => {
 
   return (
     <BrowserRouter>
-      <div className={classes.app}>
-        <Header title={props.title}/>
+      <div className={'app dark'}>
+        <Header title={props.title} />
         <Routes>
           <Route path={'/'} element={<HomePage />} />
           <Route path={'/photos'} element={<PhotosPage />} />

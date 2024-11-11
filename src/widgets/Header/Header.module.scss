@@ -22,11 +22,11 @@
   font-size: 20px;
 
   .item:hover {
-    color: var(--color-highlight);
+    color: var(--color_accent-hover);
   }
 
   .active {
-    color: var(--color-highlight);
+    color: var(--color_accent-active);
     cursor: default;
   }
 }

@@ -1,0 +1,108 @@
+.button {
+  min-width: 72px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  svg {
+    fill: var(--color_text_white);
+  }
+
+  /* default mode */
+  color: var(--color_text_default);
+  background: var(--color_bg_default);
+  border: 1px solid var(--color_border_default);
+  box-shadow: 1px 1px 3px var(--color_shadow_dark),
+    -1px -1px 3px var(--color_shadow_light);
+
+  &:hover {
+    color: var(--color_accent-hover);
+    border: 1px solid var(--color_accent-hover);
+    box-shadow: 0px 0px 5px var(--color_accent-hover);
+
+    svg {
+      fill: var(--color_accent-hover);
+    }
+  }
+
+  &:active {
+    color: var(--color_accent-active);
+    border: 1px solid var(--color_accent-active);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color_accent-active);
+    outline-offset: 1px;
+  }
+
+  &:disabled {
+    color: var(--color_text_disabled);
+    background: var(--color_bg_disabled);
+    border: 1px solid var(--color_border_disabled);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  /* primary mode */
+  &.primary {
+    color: var(--color_text_white);
+    background: var(--color_accent);
+
+    &:hover {
+      background: var(--color_accent-hover);
+    }
+
+    &:active {
+      background: var(--color_accent-active);
+    }
+
+    &:disabled {
+      background: var(--color_bg_disabled);
+    }
+  }
+
+  /* link mode */
+  &.link {
+    color: var(--color_accent);
+    background: none;
+    border: none;
+    box-shadow: none;
+
+    &:hover {
+      color: var(--color_accent-hover);
+    }
+
+    &:active {
+      color: var(--color_accent-active);
+    }
+
+    &:disabled {
+      color: var(--color_text_disabled);
+    }
+  }
+
+  /* danger mode */
+  &.danger {
+    color: var(--color_error);
+    background: var(--color_bg_default);
+    border: 1px solid var(--color_error);
+
+    &:hover {
+      color: var(--color_error-hover);
+      border-color: ver(--color_border_error-hover);
+      box-shadow: none;
+    }
+
+    &:active {
+      color: var(--color_error-active);
+    }
+
+    &:disabled {
+      color: var(--color_text_disabled);
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import classes from './Card.module.scss';
 import { Link } from 'react-router-dom';
 import { randomRGBA } from 'shared/utils';
@@ -65,6 +66,10 @@ const Todo = (props) => {
 const Post = (props) => {
   const endPoint = `/post/${props.post.id}`;
   const background = randomRGBA(0.5);
+
+  useEffect(() => {
+    localStorage.setItem(String(props.post.id), background);
+  }, []);
 
   return (
     <Link to={endPoint}>
