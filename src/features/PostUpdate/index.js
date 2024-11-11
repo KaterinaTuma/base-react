@@ -1,1 +1,0 @@
-export { PostUpdate } from './PostUpdate';
