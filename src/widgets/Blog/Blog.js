@@ -2,9 +2,8 @@ import classes from './Blog.module.scss';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { usePosts } from 'shared/stores';
-import { PostCounter } from 'features';
-import { Posts } from 'features';
-import { PostCreation } from 'features';
+import { Post } from 'features';
+import { Card } from 'entity';
 import { Preloader } from 'shared/ui';
 import { Button } from 'shared/ui';
 
@@ -22,19 +21,37 @@ export const Blog = () => {
     postsStore.getPosts(postsStore.postCount);
   }, [postsStore.postCount]);
 
+  const handlePostCreationClose = () => {
+    setIsPostCreationOpen(false);
+    postsStore.getPosts(postsStore.postCount);
+  };
+
   return (
-    <div className={classes.blog}>
-      <PostCounter name={'Post count'} />
-      <Button type={'button'}
-        onClick={() => setIsPostCreationOpen(true)}
-      >
-        {'Add post'}
-      </Button>
-      <Posts posts={postsStore.posts} />
+    <>
+      {/* Blog */}
+      <div className={classes.blog}>
+        {/* Counter */}
+        <Post.Counter name={'Post count'} />
+        {/* Create post button */}
+        <Button type={'button'}
+          onClick={() => setIsPostCreationOpen(true)}
+        >
+          {'Add post'}
+        </Button>
+        {/* Posts */}
+        <ul className={classes.cards}>
+          {postsStore.posts.map((post) => (
+            <Card.Post key={post.id}
+              post={post}
+            />
+          ))}
+        </ul>
+      </div>
+      {/* Modals */}
       <Preloader isActive={postsStore.isPostsLoading} />
-      <PostCreation isOpen={isPostCreationOpen}
-        onClose={() => setIsPostCreationOpen(false)}
+      <Post.Creator isOpen={isPostCreationOpen}
+        onClose={handlePostCreationClose}
       />
-    </div>
+    </>
   );
 };
