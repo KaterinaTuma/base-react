@@ -1,4 +1,5 @@
 import classes from './Counter.module.scss';
+import { Button } from 'shared/ui';
 
 /**
  * @typedef {import('./types').CounterProps} CounterProps
@@ -37,26 +38,29 @@ export const Counter = (props) => {
         {props.name}: {props.count}
       </p>
       {/* Down */}
-      <button className={classes.button}
+      <Button mode={'default'}
+        type={'button'}
         disabled={props.isDisabled || isMinCount}
         onClick={handleDownClick}
       >
         Down
-      </button>
+      </Button>
       {/* Up */}
-      <button className={classes.button}
+      <Button mode='default'
+        type='button'
         disabled={props.isDisabled || isMaxCount}
         onClick={handleUpClick}
       >
         Up
-      </button>
+      </Button>
       {/* Reset */}
-      <button className={classes.button}
+      <Button mode='default'
+        type='button'
         disabled={props.isDisabled}
         onClick={handleResetClick}
       >
         Reset
-      </button>
+      </Button>
     </div>
   );
 };
