@@ -1,9 +1,5 @@
 export { PhotoCounter } from './PhotoCounter';
 export { TodoCounter } from './TodoCounter';
-export { PostCounter } from './PostCounter';
 export { Photos } from './Photos';
 export { Todos } from './Todos';
-export { Posts } from './Posts';
-export { PostCreation } from './PostCreation';
-export { PostUpdate } from './PostUpdate';
-export { PostDeletion } from './PostDeletion';
+export { Post } from './Post';
