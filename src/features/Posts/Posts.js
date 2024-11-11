@@ -12,9 +12,10 @@ import { Card } from 'entity';
  */
 
 export const Posts = (props) => {
+  const postsArr = Object.values(props.posts);
   return (
     <ul className={classes.posts}>
-      {props.posts.map((post) => (
+      {postsArr.map((post) => (
         <Card.Post key={post.id}
           post={post}
         />
