@@ -32,11 +32,11 @@ export const Blog = () => {
       <div className={classes.blog}>
         {/* Counter */}
         <Post.Counter name={'Post count'} />
-        {/* Create post button */}
+        {/* Button */}
         <Button type={'button'}
           onClick={() => setIsPostCreationOpen(true)}
         >
-          {'Add post'}
+          Create post
         </Button>
         {/* Posts */}
         <ul className={classes.cards}>
