@@ -1,0 +1,1 @@
+export { genQueryOpts } from './genQueryOpts';

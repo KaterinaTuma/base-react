@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import classes from './Card.module.scss';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { randomRGBA } from 'shared/utils';
 

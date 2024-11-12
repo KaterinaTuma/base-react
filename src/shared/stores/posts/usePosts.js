@@ -1,12 +1,12 @@
 import { create } from 'zustand';
 import { API_FIREBASE_URL } from 'shared/config';
 import { partial } from 'shared/utils';
+import { genQueryOpts } from 'shared/utils';
 
 /**
  * @typedef {import('./types').PostsStore} PostsStore
  * @typedef {import('./types').PostForCreate} PostForCreate
  * @typedef {import('./types').PostForUpdate} PostForUpdate
- * @typedef {import('./types').PostForDelete} PostForDelete
  * @typedef {import('./types').StoreCreator} StoreCreator
  * @typedef {import('./types').SetterCallback} SetterCallback
  */
@@ -42,7 +42,7 @@ const getPosts = async (set, count) => {
     }));
     const endPoint = `posts.json?orderBy="timestamp"&limitToLast=${count}`;
     const response = await fetch(`${API_FIREBASE_URL}/${endPoint}`);
-    if (!response.ok) throw new Error('posts not received');
+    if (!response.ok) throw new Error('Posts not received');
     const postsFromAPI = await response.json();
     const posts = Object.entries(postsFromAPI)
       .map(([id, postData]) => ({
@@ -146,14 +146,7 @@ const createPost = async (set, postForCreate) => {
       isPostCreated: false,
       postCreateErrorMessage: '',
     }));
-    // const queryOpts = genQueryOpts('POST', postForCreate);
-    // const queryOpts = genQueryOpts('PUT', postForUpdate);
-    // const queryOpts = genQueryOpts('DELETE');
-    const queryOpts = {
-      method: 'POST',
-      body: JSON.stringify(postForCreate),
-      headers: { 'Content-type': 'application/json' },
-    };
+    const queryOpts = genQueryOpts('POST', postForCreate);
     const endPoint = `posts.json`;
     const queryURL = `${API_FIREBASE_URL}/${endPoint}`;
     const response = await fetch(queryURL, queryOpts);
@@ -173,7 +166,6 @@ const createPost = async (set, postForCreate) => {
       isPostCreated: false,
       postCreateErrorMessage: message,
     }));
-    console.log(message);
   };
 };
 
@@ -207,11 +199,7 @@ const updatePost = async (set, postForUpdate) => {
       isPostUpdated: false,
       postUpdateErrorMessage: '',
     }));
-    const queryOpts = {
-      method: 'PUT',
-      body: JSON.stringify(postForUpdate),
-      headers: { 'Content-type': 'application/json' },
-    };
+    const queryOpts = genQueryOpts('PUT', postForUpdate);
     const endPoint = `posts/${postForUpdate.id}.json`;
     const queryURL = `${API_FIREBASE_URL}/${endPoint}`;
     const response = await fetch(queryURL, queryOpts);
@@ -264,7 +252,7 @@ const deletePost = async (set, postId) => {
       isPostDeleted: false,
       postDeleteErrorMessage: '',
     }));
-    const queryOpts = { method: 'DELETE' };
+    const queryOpts = genQueryOpts('DELETE');
     const endPoint = `posts/${postId}.json`;
     const queryURL = `${API_FIREBASE_URL}/${endPoint}`;
     const response = await fetch(queryURL, queryOpts);
@@ -283,7 +271,6 @@ const deletePost = async (set, postId) => {
       isPostDeleted: false,
       postDeleteErrorMessage: message,
     }));
-    console.log(message);
   };
 };
 

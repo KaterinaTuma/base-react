@@ -24,8 +24,6 @@ export const Modal = (props) => {
       ? props.onClose(event)
       : null;
 
-  console.log(props.children);
-
   return (
     <div className={classes.modal}
       onClick={handleOverlayClick}

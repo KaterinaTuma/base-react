@@ -1,4 +1,19 @@
 .todoPage {
+  position: relative;
   margin-top: 32px;
   padding: 30px 60px;
+
+  .buttons {
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    top: 18px;
+    right: -100px;
+  }
+
+  button {
+    padding: 8px;
+    min-width: 30px;
+  }
 }

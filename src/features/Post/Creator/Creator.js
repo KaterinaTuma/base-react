@@ -22,12 +22,18 @@ import { DEFAULT_USER_ID } from 'shared/config';
  */
 
 export const Creator = (props) => {
-  if (!props.isOpen) return null;
-
   const postsStore = usePosts();
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (postsStore.isPostCreated || postsStore.postCreateErrorMessage) {
+      setIsModalOpen(true);
+    }
+  }, [postsStore.isPostCreated, postsStore.postCreateErrorMessage]);
+
+  if (!props.isOpen) return null;
 
   /** @type {(event: ChangeInputEvent) => void} */
   const handlePostTitleChange = (event) => {
@@ -56,12 +62,6 @@ export const Creator = (props) => {
     postsStore.resetPostCreation();
     props.onClose();
   };
-
-  useEffect(() => {
-    if (postsStore.isPostCreated || postsStore.postCreateErrorMessage) {
-      setIsModalOpen(true);
-    }
-  }, [postsStore.isPostCreated, postsStore.postCreateErrorMessage]);
 
   return (
     <>
