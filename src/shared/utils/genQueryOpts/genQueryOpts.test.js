@@ -9,7 +9,7 @@ const testData = {
       body: 'Some body',
       timestamp: 1729595400000,
     },
-    expectedQueryOpts: {
+    expectedQuery: {
       method: 'POST',
       body: JSON.stringify({
         userId: '0001',
@@ -29,7 +29,7 @@ const testData = {
       body: 'Another body',
       timestamp: 1729595400000,
     },
-    expectedQueryOpts: {
+    expectedQuery: {
       method: 'PUT',
       body: JSON.stringify({
         userId: '0002',
@@ -43,7 +43,7 @@ const testData = {
 
   test3: {
     method: 'DELETE',
-    expectedQueryOpts: {
+    expectedQuery: {
       method: 'DELETE',
       headers: { 'Content-type': 'application/json' },
     },
@@ -54,16 +54,16 @@ describe('genQueryOpts', () => {
   test('Unit test1', () => {
     const test1 = testData.test1;
     const queryOpts = genQueryOpts(test1.method, test1.body);
-    expect(queryOpts).toEqual(test1.expectedQueryOpts);
+    expect(queryOpts).toEqual(test1.expectedQuery);
   });
   test('Unit test2', () => {
     const test2 = testData.test2;
     const queryOpts = genQueryOpts(test2.method,  test2.body);
-    expect(queryOpts).toEqual(test2.expectedQueryOpts);
+    expect(queryOpts).toEqual(test2.expectedQuery);
   });
   test('Unit test3', () => {
     const test3 = testData.test3;
     const queryOpts = genQueryOpts(test3.method);
-    expect(queryOpts).toEqual(test3.expectedQueryOpts);
+    expect(queryOpts).toEqual(test3.expectedQuery);
   });
 });
