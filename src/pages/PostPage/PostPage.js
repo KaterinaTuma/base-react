@@ -1,12 +1,15 @@
 import classes from './PostPage.module.scss';
+import { useParams } from 'react-router-dom';
+import { usePosts } from 'shared/stores';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { Post } from 'features';
-import { usePosts } from 'shared/stores';
-import { Button, Preloader } from 'shared/ui';
+import { Modal } from 'shared/ui';
+import { Button } from 'shared/ui';
+import { Preloader } from 'shared/ui';
+import { IconDelete } from 'shared/icons';
+import { IconEdit } from 'shared/icons';
 import { randomRGBA } from 'shared/utils';
-import { IconDelete, IconEdit } from 'shared/icons';
 
 /**
  * @function PostPage
@@ -18,6 +21,7 @@ export const PostPage = () => {
   const postsStore = usePosts();
   const [isPostUpdateOpen, setIsPostUpdateOpen] = useState(false);
   const [isPostDeletionOpen, setIsPostDeletionOpen] = useState(false);
+  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
 
   if (!params.postId) return <p>Invalid post id</p>;
 
@@ -25,6 +29,12 @@ export const PostPage = () => {
     if (!params.postId) return;
     postsStore.getPost(params.postId);
   }, [params.postId]);
+
+  useEffect(() => {
+    if (postsStore.isPostUpdated || postsStore.postUpdateErrorMessage) {
+      setIsFeedbackModalOpen(true);
+    }
+  }, [postsStore.isPostUpdated, postsStore.postUpdateErrorMessage]);
 
   const handlePostUpdateClose = () => {
     setIsPostUpdateOpen(false);
@@ -34,6 +44,12 @@ export const PostPage = () => {
   const handlePostDeletionClose = () => {
     setIsPostDeletionOpen(false);
     if (params.postId) postsStore.getPost(params.postId);
+  };
+
+  const handleModalClose = () => {
+    setIsFeedbackModalOpen(false);
+    setIsPostUpdateOpen(false);
+    postsStore.resetPostUpdate();
   };
 
   if (!postsStore.post && postsStore.isPostLoading) return <Preloader isActive={postsStore.isPostLoading} />;
@@ -71,6 +87,13 @@ export const PostPage = () => {
       <Post.Deleter isOpen={isPostDeletionOpen}
         onClose={handlePostDeletionClose}
       />
+      <Modal isOpen={isFeedbackModalOpen}
+        type={postsStore.isPostUpdated ? 'success' : 'error'}
+        onClose={handleModalClose}
+      >
+        {postsStore.isPostUpdated && <p>Post was successfully updated!</p>}
+        {postsStore.postUpdateErrorMessage && <p>Something went wrong!</p>}
+      </Modal>
     </>
   );
 };
