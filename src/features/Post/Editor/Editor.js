@@ -28,7 +28,6 @@ export const Editor = (props) => {
   const postsStore = usePosts();
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState('');
-  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
 
   useEffect(() => {
     if (!postsStore.post) return;
@@ -60,65 +59,42 @@ export const Editor = (props) => {
     postsStore.updatePost(post);
   };
 
-  const handleModalClose = () => {
-    setIsFeedbackModalOpen(false);
-    postsStore.resetPostUpdate();
-    props.onClose();
-  };
-
-  useEffect(() => {
-    if (postsStore.isPostUpdated || postsStore.postUpdateErrorMessage) {
-      setIsFeedbackModalOpen(true);
-    }
-  }, [postsStore.isPostUpdated, postsStore.postUpdateErrorMessage]);
-
   return (
-    <>
-      {/* PostUpdate modal */}
-      <Modal isOpen={props.isOpen}
-        onClose={props.onClose}
-      >
-        <div className={classes.modalBody}>
-          {/* Title */}
-          <h2 className={classes.title}>Update post</h2>
-          {/* Form */}
-          <form className={classes.form}
-            onSubmit={handleFormSubmit}>
-            <InputText placeholder={'Enter title'}
-              value={postTitle}
-              onChange={handleTitleChange}
-            />
-            <Textarea className={classes.input}
-              placeholder={'Enter content'}
-              value={postBody}
-              onChange={handleBodyChange}
-            />
-            <div className={classes.buttons}>
-              <Button mode={'default'}
-                type={'submit'}
-                disabled={!postTitle || !postBody || postsStore.isPostUpdating}
-              >
-                {'Update'}
-              </Button>
-              <Button type={'button'}
-                disabled={postsStore.isPostUpdating}
-                onClick={props.onClose}
-              >
-                {'Cancel'}
-              </Button>
-            </div>
-          </form>
-          <Preloader isActive={postsStore.isPostUpdating}/>
-        </div>
-      </Modal>
-      {/* Feedback modal */}
-      <Modal isOpen={isFeedbackModalOpen}
-        type={postsStore.isPostUpdated ? 'success' : 'error'}
-        onClose={handleModalClose}
-      >
-        {postsStore.isPostUpdated && <p>Post was successfully updated!</p>}
-        {postsStore.postUpdateErrorMessage && <p>Something went wrong!</p>}
-      </Modal>
-    </>
+    <Modal isOpen={props.isOpen}
+      onClose={props.onClose}
+    >
+      <div className={classes.modalBody}>
+        {/* Title */}
+        <h2 className={classes.title}>Update post</h2>
+        {/* Form */}
+        <form className={classes.form}
+          onSubmit={handleFormSubmit}>
+          <InputText placeholder={'Enter title'}
+            value={postTitle}
+            onChange={handleTitleChange}
+          />
+          <Textarea className={classes.input}
+            placeholder={'Enter content'}
+            value={postBody}
+            onChange={handleBodyChange}
+          />
+          <div className={classes.buttons}>
+            <Button mode={'default'}
+              type={'submit'}
+              disabled={!postTitle || !postBody || postsStore.isPostUpdating}
+            >
+              {'Update'}
+            </Button>
+            <Button type={'button'}
+              disabled={postsStore.isPostUpdating}
+              onClick={props.onClose}
+            >
+              {'Cancel'}
+            </Button>
+          </div>
+        </form>
+        <Preloader isActive={postsStore.isPostUpdating}/>
+      </div>
+    </Modal>
   );
 };
