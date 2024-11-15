@@ -1,7 +1,7 @@
 import classes from './Blog.module.scss';
+import { usePosts } from 'shared/stores';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { usePosts } from 'shared/stores';
 import { Post } from 'features';
 import { Card } from 'entity';
 import { Preloader } from 'shared/ui';
@@ -14,15 +14,15 @@ import { Button } from 'shared/ui';
 
 export const Blog = () => {
   const postsStore = usePosts();
-  const [isPostCreationOpen, setIsPostCreationOpen] = useState(false);
+  const [isCreatorOpen, setIsCreatorOpen] = useState(false);
 
   useEffect(() => {
     if (!postsStore.postCount) return;
     postsStore.getPosts(postsStore.postCount);
   }, [postsStore.postCount]);
 
-  const handlePostCreationClose = () => {
-    setIsPostCreationOpen(false);
+  const handleCreatorClose = () => {
+    setIsCreatorOpen(false);
     postsStore.getPosts(postsStore.postCount);
   };
 
@@ -34,7 +34,7 @@ export const Blog = () => {
         <Post.Counter name={'Post count'} />
         {/* Button */}
         <Button type={'button'}
-          onClick={() => setIsPostCreationOpen(true)}
+          onClick={() => setIsCreatorOpen(true)}
         >
           Create post
         </Button>
@@ -49,8 +49,8 @@ export const Blog = () => {
       </div>
       {/* Modals */}
       <Preloader isActive={postsStore.isPostsLoading} />
-      <Post.Creator isOpen={isPostCreationOpen}
-        onClose={handlePostCreationClose}
+      <Post.Creator isOpen={isCreatorOpen}
+        onClose={handleCreatorClose}
       />
     </>
   );
