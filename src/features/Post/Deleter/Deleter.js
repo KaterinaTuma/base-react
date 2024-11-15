@@ -18,10 +18,9 @@ import { Preloader } from 'shared/ui';
  */
 
 export const Deleter = (props) => {
-  if (!props.isOpen) return null;
-
   const postsStore = usePosts();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  if (!props.isOpen) return null;
 
   /** @type {(event: SubmitFormEvent) => void} */
   const handleFormSubmit = (event) => {
@@ -29,12 +28,6 @@ export const Deleter = (props) => {
     if (!postsStore.post?.id) return;
     postsStore.deletePost(postsStore.post.id);
   };
-
-  useEffect(() => {
-    if (postsStore.isPostDeleted || postsStore.postDeleteErrorMessage) {
-      setIsModalOpen(true);
-    }
-  }, [postsStore.isPostDeleted, postsStore.postDeleteErrorMessage]);
 
   return (
     <Modal isOpen={props.isOpen}
