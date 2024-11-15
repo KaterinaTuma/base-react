@@ -20,8 +20,8 @@ import { randomRGBA } from 'shared/utils';
 export const PostPage = () => {
   const params = useParams();
   const postsStore = usePosts();
-  const [isPostUpdateOpen, setIsPostUpdateOpen] = useState(false);
-  const [isPostDeletionOpen, setIsPostDeletionOpen] = useState(false);
+  const [isEditorOpen, setIsEditorOpen] = useState(false);
+  const [isDeletorOpen, setIsDeletorOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -47,20 +47,20 @@ export const PostPage = () => {
     postsStore.postDeleteErrorMessage],
   );
 
-  const handlePostUpdateClose = () => {
-    setIsPostUpdateOpen(false);
+  const handleEditorClose = () => {
+    setIsEditorOpen(false);
     if (params.postId) postsStore.getPost(params.postId);
   };
 
-  const handlePostDeletionClose = () => {
-    setIsPostDeletionOpen(false);
+  const handleDeletorClose = () => {
+    setIsDeletorOpen(false);
     if (params.postId) postsStore.getPost(params.postId);
   };
 
   const handleModalClose = () => {
     setIsModalOpen(false);
-    setIsPostUpdateOpen(false);
-    setIsPostDeletionOpen(false);
+    setIsEditorOpen(false);
+    setIsDeletorOpen(false);
     postsStore.resetPostUpdate();
     postsStore.resetPostDeletion();
     if (postsStore.isPostDeleted) navigate(-1);
@@ -82,24 +82,24 @@ export const PostPage = () => {
         <div className={classes.buttons}>
           <Button mode={'default'}
             type={'button'}
-            onClick={() => setIsPostUpdateOpen(true)}
+            onClick={() => setIsEditorOpen(true)}
           >
             <IconEdit />
           </Button>
           <Button mode={'default'}
             type={'button'}
-            onClick={() => setIsPostDeletionOpen(true)}
+            onClick={() => setIsDeletorOpen(true)}
           >
             <IconDelete />
           </Button>
         </div>
       </div>
       {/* Modals */}
-      <Post.Editor isOpen={isPostUpdateOpen}
-        onClose={handlePostUpdateClose}
+      <Post.Editor isOpen={isEditorOpen}
+        onClose={handleEditorClose}
       />
-      <Post.Deleter isOpen={isPostDeletionOpen}
-        onClose={handlePostDeletionClose}
+      <Post.Deleter isOpen={isDeletorOpen}
+        onClose={handleDeletorClose}
       />
       <Modal isOpen={isModalOpen}
         type={(postsStore.isPostUpdated || postsStore.isPostDeleted) ? 'success' : 'error'}
