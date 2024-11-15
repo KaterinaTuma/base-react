@@ -23,8 +23,6 @@ import { Preloader } from 'shared/ui';
  */
 
 export const Editor = (props) => {
-  if (!props.isOpen) return null;
-
   const postsStore = usePosts();
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState('');
@@ -34,6 +32,8 @@ export const Editor = (props) => {
     setPostTitle(postsStore.post.title);
     setPostBody(postsStore.post.body);
   }, [postsStore.post]);
+
+  if (!props.isOpen) return null;
 
   /** @type {(event: ChangeInputEvent) => void} */
   const handleTitleChange = (event) => {
