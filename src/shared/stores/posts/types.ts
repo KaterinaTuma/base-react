@@ -28,13 +28,6 @@ export type PostForUpdate = {
   timestamp: number;
 };
 
-export type PostForDelete = {
-  userId: string;
-  id: string;
-  title: string;
-  body: string;
-};
-
 /**********************************************
   Store types
 **********************************************/
