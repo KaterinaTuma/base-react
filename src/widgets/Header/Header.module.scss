@@ -13,6 +13,18 @@
   .logo {
     font-size: 24px;
     font-weight: 600;
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+
+    svg {
+      color: #fff;
+    }
+
+    &:hover,
+    &:hover svg {
+      color: var(--color_accent-hover);
+    }
   }
 }
 

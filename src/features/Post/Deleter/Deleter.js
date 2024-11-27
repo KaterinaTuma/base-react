@@ -1,7 +1,5 @@
 import classes from './Deleter.module.scss';
 import { usePosts } from 'shared/stores';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import { Modal } from 'shared/ui';
 import { Button } from 'shared/ui';
 import { Preloader } from 'shared/ui';

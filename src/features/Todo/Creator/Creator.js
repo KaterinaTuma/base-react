@@ -23,11 +23,11 @@ import { randomInt } from 'shared/utils';
  */
 
 export const Creator = (props) => {
-  if (!props.isOpen) return null;
-
   const todosStore = useTodos();
   const [title, setTitle] = useState('');
   const [isCompleted, setIsCompleted] = useState(false);
+
+  if (!props.isOpen) return null;
 
   /** @type {(event: ChangeInputEvent) => void} */
   const handleTitleChange = (event) => {

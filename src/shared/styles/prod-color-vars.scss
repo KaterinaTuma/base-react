@@ -1,25 +1,100 @@
-@import 'system-color-vars';
+@import '../../app/styles/system-color-vars';
 
 .app {
   &.light {
     /* page */
     --page-bg: $white-2;
-    --page-color: $white-1;
+    --page-color: $black-1;
+
+    /* header */
+    --header-bg: $white-1;
 
     /* form */
     --form-bg: $white-1;
 
+    /* label */
+    --label-color: $blue-gray-1;
+
     /* inputText */
-    --inputText-placeholder-color: $gray-6;
+    --inputText-placeholder-color: $gray-8;
     --inputText-default-color: $black-1;
     --inputText-default-border: $blue-gray-2;
-    --inputText-hover-color: $black-1;
     --inputText-hover-border: $blue-2;
-    --inputText-active-color: $black-1;
     --inputText-active-border: $blue-4;
-    --inputText-disabled-color: $gray-6;
+    --inputText-disabled-color: $gray-8;
     --inputText-disabled-bg: $white-3;
-    --inputText-disabled-border: $gray-6;
+    --inputText-disabled-border: $gray-8;
+
+    /* textarea */
+    --textarea-placeholder-color: $gray-8;
+    --textarea-default-color: $black-1;
+    --textarea-default-border: $blue-gray-2;
+    --textarea-hover-border: $blue-2;
+    --textarea-active-border: $blue-4;
+    --textarea-disabled-color: $gray-8;
+    --textarea-disabled-bg: $white-3;
+    --textarea-disabled-border: $gray-8;
+
+    /* select */
+    --select-placeholder-color: $gray-8;
+    --select-default-color: $black-1;
+    --select-default-border: $blue-gray-2;
+    --select-hover-border: $blue-2;
+    --select-active-border: $blue-4;
+    --select-disabled-color: $gray-8;
+    --select-disabled-bg: $white-3;
+    --select-disabled-border: $gray-8;
+
+    /* checkbox */
+    --checkbox-default-border: $blue-gray-2;
+    --checkbox-hover-border: $blue-2;
+    --checkbox-active-color: $white-1;
+    --checkbox-active-bg: $blue-2;
+    --checkbox-active-border: $blue-2;
+    --checkbox-disabled-bg: $white-3;
+    --checkbox-disabled-border: $gray-8;
+
+    /* buttonText-default */
+    --buttonText-default-default-color: $black-1;
+    --buttonText-default-default-border: $blue-gray-2;
+    --buttonText-default-hover-border: $blue-2;
+    --buttonText-default-active-border: $blue-4;
+    --buttonText-default-disabled-color: $gray-8;
+    --buttonText-default-disabled-bg: $white-3;
+    --buttonText-default-disabled-border: $gray-8;
+
+    /* buttonText-accent */
+    --buttonText-accent-default-color: $white-1;
+    --buttonText-accent-default-bg: $blue-1;
+    --buttonText-accent-default-border: $blue-1;
+    --buttonText-accent-hover-color: $white-1;
+    --buttonText-accent-hover-bg: $blue-2;
+    --buttonText-accent-hover-border: $blue-2;
+    --buttonText-accent-active-color: $white-1;
+    --buttonText-accent-active-bg: $blue-4;
+    --buttonText-accent-active-border: $blue-4;
+    --buttonText-accent-disabled-color: $gray-8;
+    --buttonText-accent-disabled-bg: $white-3;
+    --buttonText-accent-disabled-border: $gray-8;
+
+    /* buttonText-dashed */
+    --buttonText-dashed-default-color: $black-1;
+    --buttonText-dashed-default-border: $blue-gray-2;
+    --buttonText-dashed-hover-border: $blue-2;
+    --buttonText-dashed-active-border: $blue-4;
+    --buttonText-dashed-disabled-color: $gray-8;
+    --buttonText-dashed-disabled-bg: $white-3;
+    --buttonText-dashed-disabled-border: $gray-8;
+
+    /* buttonText-text */
+    --buttonText-text-default-color: $blue-1;
+    --buttonText-text-hover-color: $blue-1;
+    --buttonText-text-hover-bg: $blue-gray-2;
+    --buttonText-text-active-color: $blue-4;
+    --buttonText-text-active-bg: $blue-gray-2;
+    --buttonText-text-disabled-bg: $white-3;
+    --buttonText-text-disabled-color: $gray-8;
+    --buttonText-text-disabled-border: $gray-8;
 
     /* buttonIcon-default */
     --buttonIcon-default-default-color: $blue-gray-1;
@@ -28,9 +103,9 @@
     --buttonIcon-default-hover-border: $blue-2;
     --buttonIcon-default-active-color: $blue-4;
     --buttonIcon-default-active-border: $blue-4;
-    --buttonIcon-default-disabled-color: $gray-6;
+    --buttonIcon-default-disabled-color: $gray-8;
     --buttonIcon-default-disabled-bg: $white-3;
-    --buttonIcon-default-disabled-border: $gray-6;
+    --buttonIcon-default-disabled-border: $gray-8;
 
     /* buttonIcon-accent */
     --buttonIcon-accent-default-color: $blue-gray-1;
@@ -38,25 +113,22 @@
     --buttonIcon-accent-hover-color: $white-1;
     --buttonIcon-accent-hover-bg: $blue-2;
     --buttonIcon-accent-hover-border: $blue-2;
-    --buttonIcon-accent-active-bg: $blue-4;
     --buttonIcon-accent-active-color: $white-1;
+    --buttonIcon-accent-active-bg: $blue-4;
     --buttonIcon-accent-active-border: $blue-4;
-    --buttonIcon-accent-disabled-color: $gray-6;
+    --buttonIcon-accent-disabled-color: $gray-8;
     --buttonIcon-accent-disabled-bg: $white-3;
-    --buttonIcon-accent-disabled-border: $gray-6;
+    --buttonIcon-accent-disabled-border: $gray-8;
 
-    /* burger */
-    --burger-color: $blue-gray-1;
-    --burger-border: $blue-gray-2;
-    --burger-hover-border: $blue-2;
-    --burger-hover-bg: $blue-2;
-    --burger-hover-color: $white-1;
-    --burger-active-color: $white-1;
-    --burger-active-border: $blue-4;
-    --burger-active-bg: $blue-4;
-    --burger-disabled-color: $gray-6;
-    --burger-disabled-bg: $white-3;
-    --burger-disabled-border: $gray-6;
+    /* buttonIcon-icon */
+    --buttonIcon-icon-default-color: $blue-gray-1;
+    --buttonIcon-icon-hover-color: $blue-2;
+    --buttonIcon-icon-hover-bg: $blue-gray-2;
+    --buttonIcon-icon-active-bg: $blue-gray-2;
+    --buttonIcon-icon-active-color: $blue-4;
+    --buttonIcon-icon-disabled-bg: $white-3;
+    --buttonIcon-icon-disabled-color: $gray-8;
+    --buttonIcon-icon-disabled-border: $gray-8;
 
     /* menuItem */
     --menuItem-default-color: $black-1;
@@ -64,65 +136,164 @@
     --menuItem-hover-bg: $blue-gray-2;
     --menuItem-active-color: $blue-4;
     --menuItem-active-bg: $blue-gray-3;
-    --menuItem-disabled-color: $gray-6;
+    --menuItem-disabled-color: $gray-8;
+
+    /* burger */
+    --burger-color: $blue-gray-1;
+    --burger-border: $blue-gray-2;
+    --burger-hover-color: $white-1;
+    --burger-hover-border: $blue-2;
+    --burger-hover-bg: $blue-2;
+    --burger-active-color: $white-1;
+    --burger-active-border: $blue-4;
+    --burger-active-bg: $blue-4;
+    --burger-disabled-color: $gray-8;
+    --burger-disabled-bg: $white-3;
+    --burger-disabled-border: $gray-8;
+
+    /* switch */
+    --switch-active-color: $white-1;
+    --switch-active-bg: $blue-1;
+    --switch-inactive-bg: $blue-gray-2;
+
+    /* table */
+    --tableHeader-color: $blue-gray-1;
+    --tableHeader-bg: $white-4;
+    --tableHeader-border: $blue-gray-4;
+    --tableCell-color: $black-1;
+    --tableCell-bg: $green-1;
+    --tableCell-border: $blue-gray-4;
+    --table-bg: $white-4;
   }
 
   &.dark {
     /* page */
     --page-bg: $gray-1;
-    --page-color: $black-1;
+    --page-color: $white-1;
+
+    /* header */
+    --header-bg: $gray-3;
 
     /* form */
     --form-bg: $gray-2;
 
+    /* label */
+    --label-color: $$gray-8;
+
     /* inputText */
-    --inputText-placeholder-color: $gray-4;
+    --inputText-placeholder-color: $gray-5;
     --inputText-default-color: $white-1;
-    --inputText-default-border: $gray-5;
-    --inputText-hover-color: $white-1;
+    --inputText-default-border: $gray-7;
     --inputText-hover-border: $blue-3;
-    --inputText-active-color: $white-1;
     --inputText-active-border: $blue-5;
-    --inputText-disabled-color: $gray-4;
+    --inputText-disabled-color: $gray-5;
     --inputText-disabled-bg: $gray-3;
-    --inputText-disabled-border: $gray-4;
+    --inputText-disabled-border: $gray-5;
+
+    /* textarea */
+    --textarea-placeholder-color: $gray-5;
+    --textarea-default-color: $white-1;
+    --textarea-default-border: $gray-7;
+    --textarea-hover-border: $blue-3;
+    --textarea-active-border: $blue-5;
+    --textarea-disabled-color: $gray-5;
+    --textarea-disabled-bg: $gray-3;
+    --textarea-disabled-border: $gray-5;
+
+    /* select */
+    --select-placeholder-color: $gray-5;
+    --select-default-color: $white-1;
+    --select-default-border: $gray-7;
+    --select-hover-border: $blue-3;
+    --select-active-border: $blue-5;
+    --select-disabled-color: $gray-5;
+    --select-disabled-bg: $gray-3;
+    --select-disabled-border: $gray-5;
+
+    /* checkbox */
+    --checkbox-default-border: $gray-7;
+    --checkbox-hover-border: $blue-3;
+    --checkbox-active-color: $white-1;
+    --checkbox-active-bg: $blue-3;
+    --checkbox-active-border: $blue-3;
+    --checkbox-disabled-bg: $gray-3;
+    --checkbox-disabled-border: $gray-5;
+
+    /* buttonText-default */
+    --buttonText-default-default-color: $white-1;
+    --buttonText-default-default-border: $gray-7;
+    --buttonText-default-hover-border: $blue-3;
+    --buttonText-default-active-border: $blue-5;
+    --buttonText-default-disabled-color: $gray-5;
+    --buttonText-default-disabled-bg: $gray-3;
+    --buttonText-default-disabled-border: $gray-5;
+
+    /* buttonText-accent */
+    --buttonText-accent-default-color: $white-1;
+    --buttonText-accent-default-bg: $blue-1;
+    --buttonText-accent-default-border: $blue-1;
+    --buttonText-accent-hover-color: $white-1;
+    --buttonText-accent-hover-bg: $blue-3;
+    --buttonText-accent-hover-border: $blue-3;
+    --buttonText-accent-active-color: $white-1;
+    --buttonText-accent-active-bg: $blue-5;
+    --buttonText-accent-active-border: $blue-5;
+    --buttonText-accent-disabled-color: $gray-5;
+    --buttonText-accent-disabled-bg: $gray-3;
+    --buttonText-accent-disabled-border: $gray-5;
+
+    /* buttonText-dashed */
+    --buttonText-dashed-default-color: $white-1;
+    --buttonText-dashed-default-border: $gray-7;
+    --buttonText-dashed-hover-border: $blue-3;
+    --buttonText-dashed-active-border: $blue-5;
+    --buttonText-dashed-disabled-color: $gray-5;
+    --buttonText-dashed-disabled-bg: $gray-3;
+    --buttonText-dashed-disabled-border: $gray-5;
+
+    /* buttonText-text */
+    --buttonText-text-default-color: $blue-1;
+    --buttonText-text-hover-color: $blue-1;
+    --buttonText-text-hover-bg: $blue-gray-2;
+    --buttonText-text-active-color: $blue-5;
+    --buttonText-text-active-bg: $blue-gray-2;
+    --buttonText-text-disabled-bg: $gray-3;
+    --buttonText-text-disabled-color: $gray-5;
+    --buttonText-text-disabled-border: $gray-5;
 
     /* buttonIcon-default */
-    --buttonIcon-default-default-color: $gray-6;
-    --buttonIcon-default-default-border: $gray-5;
+    --buttonIcon-default-default-color: $gray-8;
+    --buttonIcon-default-default-border: $gray-7;
     --buttonIcon-default-hover-color: $blue-3;
     --buttonIcon-default-hover-border: $blue-3;
     --buttonIcon-default-active-color: $blue-5;
     --buttonIcon-default-active-border: $blue-5;
-    --buttonIcon-default-disabled-color: $gray-4;
+    --buttonIcon-default-disabled-color: $gray-5;
     --buttonIcon-default-disabled-bg: $gray-3;
-    --buttonIcon-default-disabled-border: $gray-4;
+    --buttonIcon-default-disabled-border: $gray-5;
 
     /* buttonIcon-accent */
-    --buttonIcon-accent-default-color: $gray-6;
-    --buttonIcon-accent-default-border: $gray-5;
+    --buttonIcon-accent-default-color: $gray-8;
+    --buttonIcon-accent-default-border: $gray-7;
     --buttonIcon-accent-hover-color: $white-1;
     --buttonIcon-accent-hover-bg: $blue-3;
     --buttonIcon-accent-hover-border: $blue-3;
-    --buttonIcon-accent-active-bg: $blue-5;
     --buttonIcon-accent-active-color: $white-1;
+    --buttonIcon-accent-active-bg: $blue-5;
     --buttonIcon-accent-active-border: $blue-5;
-    --buttonIcon-accent-disabled-color: $gray-4;
+    --buttonIcon-accent-disabled-color: $gray-5;
     --buttonIcon-accent-disabled-bg: $gray-3;
-    --buttonIcon-accent-disabled-border: $gray-4;
+    --buttonIcon-accent-disabled-border: $gray-5;
 
-    /* burger */
-    --burger-color: $gray-6;
-    --burger-border: $gray-5;
-    --burger-hover-border: $blue-3;
-    --burger-hover-bg: $blue-3;
-    --burger-hover-color: $white-1;
-    --burger-active-color: $white-1;
-    --burger-active-border: $blue-5;
-    --burger-active-bg: $blue-5;
-    --burger-disabled-color: $gray-4;
-    --burger-disabled-bg: $gray-3;
-    --burger-disabled-border: $gray-4;
+    /* buttonIcon-icon */
+    --buttonIcon-icon-default-color: $gray-8;
+    --buttonIcon-icon-hover-color: $blue-3;
+    --buttonIcon-icon-hover-bg: $blue-gray-2;
+    --buttonIcon-icon-active-bg: $blue-gray-2;
+    --buttonIcon-icon-active-color: $blue-5;
+    --buttonIcon-icon-disabled-bg: $gray-3;
+    --buttonIcon-icon-disabled-color: $gray-5;
+    --buttonIcon-icon-disabled-border: $gray-5;
 
     /* menuItem */
     --menuItem-default-color: $white-1;
@@ -130,6 +301,33 @@
     --menuItem-hover-bg: $blue-gray-2;
     --menuItem-active-color: $blue-5;
     --menuItem-active-bg: $blue-gray-3;
-    --menuItem-disabled-color: $gray-4;
+    --menuItem-disabled-color: $gray-5;
+
+    /* burger */
+    --burger-color: $gray-8;
+    --burger-border: $gray-7;
+    --burger-hover-color: $white-1;
+    --burger-hover-border: $blue-3;
+    --burger-hover-bg: $blue-3;
+    --burger-active-color: $white-1;
+    --burger-active-border: $blue-5;
+    --burger-active-bg: $blue-5;
+    --burger-disabled-color: $gray-5;
+    --burger-disabled-bg: $gray-3;
+    --burger-disabled-border: $gray-5;
+
+    /* switch */
+    --switch-active-color: $white-1;
+    --switch-active-bg: $blue-1;
+    --switch-inactive-bg: $gray-5;
+
+    /* table */
+    --tableHeader-color: $gray-8;
+    --tableHeader-bg: $gray-4;
+    --tableHeader-border: $gray-6;
+    --tableCell-color: $white-1;
+    --tableCell-bg: $gray-5;
+    --tableCell-border: $gray-6;
+    --table-bg: $gray-4;
   }
 }

@@ -26,6 +26,8 @@ export const Blog = () => {
     postsStore.getPosts(postsStore.postCount);
   };
 
+  if (postsStore.postsLoadErrorMessage) return <p>{postsStore.postsLoadErrorMessage}</p>;
+
   return (
     <>
       {/* Blog */}

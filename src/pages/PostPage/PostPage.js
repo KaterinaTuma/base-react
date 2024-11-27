@@ -25,26 +25,21 @@ export const PostPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
-
-  if (!params.postId) return <p>Invalid post id</p>;
-
   useEffect(() => {
     if (!params.postId) return;
     postsStore.getPost(params.postId);
   }, [params.postId]);
 
   useEffect(() => {
-    if (postsStore.isPostUpdated ||
+    if (postsStore.postLoadErrorMessage ||
+      postsStore.isPostUpdated ||
       postsStore.postUpdateErrorMessage ||
       postsStore.isPostDeleted ||
       postsStore.postDeleteErrorMessage
     ) {
       setIsModalOpen(true);
     }
-  }, [postsStore.isPostUpdated,
-    postsStore.postUpdateErrorMessage,
-    postsStore.isPostDeleted,
-    postsStore.postDeleteErrorMessage],
+  }, [postsStore],
   );
 
   const handleEditorClose = () => {
@@ -66,13 +61,14 @@ export const PostPage = () => {
     if (postsStore.isPostDeleted) navigate(-1);
   };
 
-  if (!postsStore.post && postsStore.isPostLoading) return <Preloader isActive={postsStore.isPostLoading} />;
+  if (!params.postId) return <p>Invalid post id</p>;
   if (!postsStore.post) return <p>{postsStore.postLoadErrorMessage}</p>;
 
   const background = localStorage.getItem(params.postId) || randomRGBA(1);
 
   return (
     <>
+      <Preloader isActive={postsStore.isPostLoading} />
       {/* Post page */}
       <div className={classes.postPage}
         style={{ background }}
@@ -105,6 +101,7 @@ export const PostPage = () => {
         type={(postsStore.isPostUpdated || postsStore.isPostDeleted) ? 'success' : 'error'}
         onClose={handleModalClose}
       >
+        {postsStore.postLoadErrorMessage && <p>{postsStore.postLoadErrorMessage}</p>}
         {postsStore.isPostUpdated && <p>Post was successfully updated!</p>}
         {postsStore.postUpdateErrorMessage && <p>Something went wrong!</p>}
         {postsStore.isPostDeleted && <p>Post was deleted!</p>}
