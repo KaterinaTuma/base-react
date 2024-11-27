@@ -1,0 +1,35 @@
+.checkbox {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #555;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 8px;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.input:checked + .custom {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.label {
+  color: var(--color_text_secondary);
+}
+
+
+

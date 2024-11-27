@@ -1,4 +1,5 @@
 import classes from './Header.module.scss';
+import { IconRocketFilled } from 'shared/icons';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
@@ -16,9 +17,12 @@ export const Header = (props) => {
   return (
     <header className={classes.header}>
       <div className={classes.wrapper}>
-        <h1 className={classes.logo}>
-          <Link to={'/'}>{props.title}</Link>
-        </h1>
+        <Link to={'/'}>
+          <h1 className={classes.logo}>
+            <IconRocketFilled />
+            {props.title}
+          </h1>
+        </Link>
         <nav>
           <ul className={classes.nav}>
             <li className={classes.item}>

@@ -1,12 +1,16 @@
 import classes from './PostPage.module.scss';
+import { useParams } from 'react-router-dom';
+import { usePosts } from 'shared/stores';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Post } from 'features';
-import { usePosts } from 'shared/stores';
-import { Button, Preloader } from 'shared/ui';
+import { Modal } from 'shared/ui';
+import { Button } from 'shared/ui';
+import { Preloader } from 'shared/ui';
+import { IconDelete } from 'shared/icons';
+import { IconEdit } from 'shared/icons';
 import { randomRGBA } from 'shared/utils';
-import { IconDelete, IconEdit } from 'shared/icons';
 
 /**
  * @function PostPage
@@ -16,33 +20,55 @@ import { IconDelete, IconEdit } from 'shared/icons';
 export const PostPage = () => {
   const params = useParams();
   const postsStore = usePosts();
-  const [isPostUpdateOpen, setIsPostUpdateOpen] = useState(false);
-  const [isPostDeletionOpen, setIsPostDeletionOpen] = useState(false);
-
-  if (!params.postId) return <p>Invalid post id</p>;
+  const [isEditorOpen, setIsEditorOpen] = useState(false);
+  const [isDeletorOpen, setIsDeletorOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!params.postId) return;
     postsStore.getPost(params.postId);
   }, [params.postId]);
 
-  const handlePostUpdateClose = () => {
-    setIsPostUpdateOpen(false);
+  useEffect(() => {
+    if (postsStore.postLoadErrorMessage ||
+      postsStore.isPostUpdated ||
+      postsStore.postUpdateErrorMessage ||
+      postsStore.isPostDeleted ||
+      postsStore.postDeleteErrorMessage
+    ) {
+      setIsModalOpen(true);
+    }
+  }, [postsStore],
+  );
+
+  const handleEditorClose = () => {
+    setIsEditorOpen(false);
     if (params.postId) postsStore.getPost(params.postId);
   };
 
-  const handlePostDeletionClose = () => {
-    setIsPostDeletionOpen(false);
+  const handleDeletorClose = () => {
+    setIsDeletorOpen(false);
     if (params.postId) postsStore.getPost(params.postId);
   };
 
-  if (!postsStore.post && postsStore.isPostLoading) return <Preloader isActive={postsStore.isPostLoading} />;
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    setIsEditorOpen(false);
+    setIsDeletorOpen(false);
+    postsStore.resetPostUpdate();
+    postsStore.resetPostDeletion();
+    if (postsStore.isPostDeleted) navigate(-1);
+  };
+
+  if (!params.postId) return <p>Invalid post id</p>;
   if (!postsStore.post) return <p>{postsStore.postLoadErrorMessage}</p>;
 
   const background = localStorage.getItem(params.postId) || randomRGBA(1);
 
   return (
     <>
+      <Preloader isActive={postsStore.isPostLoading} />
       {/* Post page */}
       <div className={classes.postPage}
         style={{ background }}
@@ -52,25 +78,35 @@ export const PostPage = () => {
         <div className={classes.buttons}>
           <Button mode={'default'}
             type={'button'}
-            onClick={() => setIsPostUpdateOpen(true)}
+            onClick={() => setIsEditorOpen(true)}
           >
             <IconEdit />
           </Button>
           <Button mode={'default'}
             type={'button'}
-            onClick={() => setIsPostDeletionOpen(true)}
+            onClick={() => setIsDeletorOpen(true)}
           >
             <IconDelete />
           </Button>
         </div>
       </div>
       {/* Modals */}
-      <Post.Editor isOpen={isPostUpdateOpen}
-        onClose={handlePostUpdateClose}
+      <Post.Editor isOpen={isEditorOpen}
+        onClose={handleEditorClose}
       />
-      <Post.Deleter isOpen={isPostDeletionOpen}
-        onClose={handlePostDeletionClose}
+      <Post.Deleter isOpen={isDeletorOpen}
+        onClose={handleDeletorClose}
       />
+      <Modal isOpen={isModalOpen}
+        type={(postsStore.isPostUpdated || postsStore.isPostDeleted) ? 'success' : 'error'}
+        onClose={handleModalClose}
+      >
+        {postsStore.postLoadErrorMessage && <p>{postsStore.postLoadErrorMessage}</p>}
+        {postsStore.isPostUpdated && <p>Post was successfully updated!</p>}
+        {postsStore.postUpdateErrorMessage && <p>Something went wrong!</p>}
+        {postsStore.isPostDeleted && <p>Post was deleted!</p>}
+        {postsStore.postDeleteErrorMessage && <p>Something went wrong!</p>}
+      </Modal>
     </>
   );
 };

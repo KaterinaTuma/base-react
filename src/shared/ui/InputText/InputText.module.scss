@@ -7,17 +7,17 @@
     width: 100%;
     padding: 8px 11px;
     font-size: 16px;
-    color: var(--color_text_default);
-    background: var(--color_bg_default);
-    border: 1px solid var(--color_border_default);
+    color: var(--inputText-default-color);
+    background: var(--inputText-default-bg);
+    border: 1px solid var(--inputText-default-border);
     border-radius: 8px;
 
   &::placeholder {
-    color: var(--color_text_secondary);
+    color: var(--inputText-placeholder-color);
   }
 
   &:focus {
-    border-color: var(--color_accent-hover);
+    border-color: var(--inputText-active-border);
     box-shadow: 0 0 0 2px var(--color_shadow_focus);
   }
 

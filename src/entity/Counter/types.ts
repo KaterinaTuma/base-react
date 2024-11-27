@@ -3,6 +3,6 @@ export type CounterProps = {
   minCount: number;
   count: number;
   maxCount: number;
-  setCount: Function;
+  setCount: (count: number) => void;
   isDisabled: boolean;
 };
