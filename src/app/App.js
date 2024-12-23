@@ -39,7 +39,7 @@ export const App = (props) => {
 
   return (
     <BrowserRouter>
-      <div className={'app dark'}>
+      <div className={'app dark change'}>
         <Header title={props.title} />
         <Routes>
           <Route path={'/'} element={<HomePage />} />
