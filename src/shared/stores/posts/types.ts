@@ -48,7 +48,7 @@ export type PostsStore = {
   isPostLoading: boolean;
   post: null | PostFromAPI;
   postLoadErrorMessage: string;
-  getPost: (postId: string ) => void;
+  getPost: (postId: string) => void;
   resetPost: () => void;
 
   /* state for create post */
