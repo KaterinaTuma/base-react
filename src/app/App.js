@@ -40,7 +40,7 @@ export const App = (props) => {
   return (
     <BrowserRouter>
       <div className={'app dark'}>
-        <Header title={props.notatitle} />
+        <Header title={props.title} />
         <Routes>
           <Route path={'/'} element={<HomePage />} />
           <Route path={'/photos'} element={<PhotosPage />} />
