@@ -8,6 +8,7 @@ export const Feature = () => {
     <div>
       Feature
       <span>Some text</span>
+      <p>New post</p>
     </div>
   );
 };
